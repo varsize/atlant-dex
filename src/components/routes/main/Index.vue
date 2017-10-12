@@ -8,4 +8,7 @@
 </template>
 
 <script>
+
+import Dragula from "dragula";
+
 </script>
