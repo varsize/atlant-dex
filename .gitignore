@@ -1,0 +1,11 @@
+.idea/
+dist/
+node_modules/
+.jshintrc
+.tern-project
+debug.log
+npm-debug.log
+.DS_Store
+src/.DS_Store
+package-lock.json
+sh.exe.stackdump
