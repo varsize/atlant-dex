@@ -13,6 +13,8 @@ module.exports = {
   },
   extends: ['plugin:vue/recommended', 'google'],
   rules: {
+		'max-len' : 0,
+    'require-jsdoc': 0,
     'vue/valid-template-root': 0,
     'vue/require-prop-types': 2,
     'vue/no-dupe-keys': 2,

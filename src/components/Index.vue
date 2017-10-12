@@ -40,7 +40,7 @@ export default {
   @import "~normalize.css/normalize";
   @import "~sass/defaults";
 
-	@import "~dragula/dist/dragula";
+  @import "~dragula/dist/dragula";
 
   @import "~bootstrap/scss/_functions";
   @import "~bootstrap/scss/_variables";

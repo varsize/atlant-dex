@@ -1,14 +1,36 @@
-<template lang="pug">
+<template lang='pug'>
 .container
   .row.mb-5.mt-5
-    .col
-      div content left
-    .col
-      div content right
+    .col#left
+      div.content__box content left
+    .col#right
+      div.content__box content right
+      div.content__box content right 2
 </template>
 
 <script>
 
-import Dragula from "dragula";
+import dragula from 'dragula';
+
+export default {
+  methods: {
+  },
+  mounted() {
+    dragula([document.querySelector('#left'), document.querySelector('#right')]);
+  },
+  components: {
+  },
+};
 
 </script>
+
+<style lang="scss">
+  #right, #left {
+    border: 1px solid black;
+  },
+  .content{
+    &__box{
+      border: 1px solid black;
+    }
+  }
+</style>
