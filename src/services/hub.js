@@ -26,6 +26,6 @@ export default {
         this.connection.qs = {token};
         this.proxy.invoke('setAuthToken', token);
       },
-    }
-  }
+    };
+  },
 };
