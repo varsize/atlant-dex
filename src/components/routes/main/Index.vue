@@ -1,26 +1,23 @@
 <template lang='pug'>
-.container
-  .row.mb-5.mt-5
-    .col
-      div.content__box content left
-    .col
-      div.content__box content right
-      div.content__box content right 2
+div
+  Tile(title="history of trades")
+    div sssssssssssssss
+  Tile(title="buy" padding)
+    div sssssssssssssss
 </template>
 
 <script>
 
+import Tile from 'components/common/Tile';
 export default {
   components: {
+    Tile,
   },
 };
 
 </script>
 
 <style lang="scss">
-  #right, #left {
-    border: 1px solid black;
-  },
   .content{
     &__box{
       border: 1px solid black;

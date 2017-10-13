@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.wrapper
   TheHeader
   router-view
   TheFooter
@@ -52,4 +52,8 @@ export default {
   @import "~sass/fonts";
   @import "~sass/overrides";
   @import "~sass/global";
+
+  .wrapper {
+    width: 100%;
+  }
 </style>
