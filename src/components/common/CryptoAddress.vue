@@ -1,10 +1,10 @@
 <template lang='pug'>
 .address
-  canvas.address__qr(v-if="isActive")
+  canvas.address__qr(:class='"address__qr"+id', v-show="isActive")
   .address__main(:class="mainClass")
     Icon.address__icon(id='qr')
-    .address__crypto 14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBs
-  .address__details(v-if="isActive")
+    .address__crypto {{address}}
+  .address__details(v-show="isActive")
     .address__actions
       .address__export Export
       .address__withdraw Withdraw
@@ -35,24 +35,32 @@ export default {
     },
   },
   methods: {
-    createQR() {
+    createQR(text) {
       new Qrious({
-        element: document.querySelector('.address__qr'),
+        element: document.querySelector('.address__qr' + this.id),
         background: '#03354f',
         foreground: '#fff',
-        value: '14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBs',
+        value: text,
         size: 111,
       });
     },
   },
   mounted() {
-    this.createQR();
+    this.createQR(this.address);
   },
   props: {
     isActive: {
       type: Boolean,
       required: false,
       default: false,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    id: {
+      type: Number,
+      required: true,
     },
   },
   components: {
