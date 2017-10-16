@@ -32,7 +32,6 @@ export default {
 <style lang="scss" scoped>
 @import "~variables";
 .tile {
-  background-color: $color_primary_1;
   &__header {
     display: flex;
     justify-content: space-between;

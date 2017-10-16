@@ -1,17 +1,26 @@
 <template lang='pug'>
 div
-  Tile(title="history of trades")
-    div sssssssssssssss
-  Tile(title="buy" padding)
-    div sssssssssssssss
+  .row
+    .col-3
+      Sidebar
+    .col-2
+      Tile(title="history of trades")
+        div sssssssssssssss
+      Tile(title="buy" padding)
+        div sssssssssssssss
+    .col-7
+      div CHART
 </template>
 
 <script>
 
 import Tile from 'components/common/Tile';
+import Sidebar from 'components/routes/main/Sidebar';
+
 export default {
   components: {
     Tile,
+    Sidebar,
   },
 };
 
