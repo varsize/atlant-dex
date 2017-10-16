@@ -32,6 +32,7 @@ export default {
 @import "~variables";
 .tile {
   border: 1px solid #182235;
+  background-color: cyan;
   &--padding {
     $padding: 26px;
     padding: $padding;

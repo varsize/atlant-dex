@@ -7,29 +7,46 @@
     .main__header
       TheHeader
     .main__tiles
-      Tile(title="history of trades")
-        div sssssssssssssss
-      Tile(title="buy" padding)
-        div sssssssssssssss
-      div CHART
+      .grid-stack
+        .grid-stack-item(
+          data-gs-x="0",
+          data-gs-y="0",
+          data-gs-width="2",
+          data-gs-height="2",
+          )
+          Tile(title="history of trades")
+            div sssssssssssssss
+        .grid-stack-item(
+          data-gs-x="0",
+          data-gs-y="0",
+          data-gs-width="2",
+          data-gs-height="2",
+          )
+          Tile(title="buy" padding)
+            div sssssssssssssss
 </template>
 
 <script>
 import Tile from 'components/common/Tile';
 import Sidebar from 'components/routes/main/Sidebar';
 import TheHeader from 'components/global/TheHeader';
+import $ from 'jquery';
+import 'gridstack';
 
 export default {
+  mounted() {
+    $('.grid-stack').gridstack();
+  },
   components: {
     Tile,
     Sidebar,
     TheHeader,
   },
 };
-
 </script>
 
 <style lang="scss">
+  @import "~gridstack/dist/gridstack";
   .main {
     display: flex;
     &__sidebar {
