@@ -4,17 +4,20 @@
   .sidebar__content
     .sidebar__main
       .sidebar__item.sidebar__header WALLETS:
-      Address.sidebar__item
+      CryptoAddress.sidebar__item()
+      CryptoAddress.sidebar__item(:isActive="true")
+      CryptoAddress.sidebar__item(:isActive="false")
+      CryptoAddress.sidebar__item(:isActive="false")
       .sidebar__item.sidebar__buttons Create or Import
     .sidebar__item.sidebar__theme Light theme Dark theme
 </template>
 
 <script>
-import Address from 'components/common/Address';
+import CryptoAddress from 'components/common/CryptoAddress';
 
 export default {
   components: {
-    Address,
+    CryptoAddress,
   },
 };
 
@@ -24,13 +27,17 @@ export default {
   .sidebar {
     &__item {
       padding: 25px;
-      border: 1px solid #032537;
+      border-bottom: 1px solid #032537;
+      border-right: 1px solid #032537;
       font-size: 12px;
     }
     &__content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+    &__header {
+      font-weight: 700;
     }
   }
 </style>
