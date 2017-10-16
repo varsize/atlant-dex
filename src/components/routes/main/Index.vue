@@ -1,6 +1,6 @@
 <template lang='pug'>
 .main
-  .main__siderbar
+  .main__sidebar
       Sidebar
   .main__toolbar
   .main__content
@@ -33,6 +33,7 @@ export default {
   .main {
     display: flex;
     &__sidebar {
+      max-width: 287px;
       border: 1px solid black;
     }
     &__toolbar {

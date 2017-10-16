@@ -99,6 +99,10 @@ export default {
     height: $size;
     margin-right: 10px;
   }
+  &__crypto {
+    max-width: 177px;
+    word-wrap: break-word;
+  }
   &__details{
     display: flex;
     flex-direction: column;

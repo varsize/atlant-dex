@@ -44,8 +44,7 @@ export default {
   },
   methods: {
     setActive(account) {
-      console.log(account);
-      for (let i = 0; i<this.accounts.length; i++) {
+      for (let i = 0; i < this.accounts.length; i++) {
         this.accounts[i].isActive = false;
       }
       account.isActive = true;
