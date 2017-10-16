@@ -61,14 +61,14 @@ export default {
 <style lang="scss">
   .sidebar {
     &__item {
-      padding: 40px 25px;
+      padding: 19px 25px;
       border-bottom: 1px solid #032537;
       border-right: 1px solid #032537;
       font-size: 12px;
     }
     &__logo {
       width: 164px;
-      height: 15px;
+      height: 16px;
       fill: #fff;
     }
     &__content {
