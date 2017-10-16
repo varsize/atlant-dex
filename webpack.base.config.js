@@ -91,14 +91,29 @@ module.exports = {
         use: ['css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
-        test: /\.(jpg|png|gif)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'assets/images',
+        test: /\.(jpe?g|png|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/',
+            },
           },
-        }],
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              pngquant: {
+                quality: '65-90',
+                speed: 4,
+              },
+              mozjpeg: {
+                progressive: true,
+                quality: 85,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(eot|ttf|woff|woff2)$/,
@@ -106,7 +121,7 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'assets/fonts',
+            outputPath: 'assets/fonts/',
           },
         }],
       },
