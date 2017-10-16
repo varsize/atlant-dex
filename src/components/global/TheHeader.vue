@@ -1,13 +1,14 @@
 <template lang="pug">
-.header TEST HEADER
+.theHeader TEST HEADER
 </template>
 
 <script>
 </script>
 
 <style lang="scss">
-  .header {
-    padding: 32px;
+  .theHeader {
+    padding: 16px;
+    width: 100%;
     color: #fff;
     background-color: #000;
   }

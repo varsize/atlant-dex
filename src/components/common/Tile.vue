@@ -1,14 +1,12 @@
 <template lang='pug'>
 .tile(:class="{'tile--padding': padding}")
-  .tile__header
-    .tile__headerLeft
-      Icon.tile__flag(id="flag")
-      .tile__title {{title}}
+  Header(v-if="title", :title="title")
   slot
 </template>
 
 <script>
-import Icon from 'components/common/Icon';
+import Icon from './Icon';
+import Header from './Header';
 
 export default {
   props: {
@@ -25,6 +23,7 @@ export default {
   },
   components: {
     Icon,
+    Header,
   },
 };
 </script>
@@ -32,26 +31,7 @@ export default {
 <style lang="scss" scoped>
 @import "~variables";
 .tile {
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &__headerLeft {
-    display: flex;
-    align-items: center;
-  }
-  &__title {
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-  &__flag {
-    width: 7px;
-    height: 10px;
-    margin-right: 15px;
-  }
+  border: 1px solid #182235;
   &--padding {
     $padding: 26px;
     padding: $padding;
