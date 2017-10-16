@@ -10,11 +10,12 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const DIR_SRC = path.resolve(__dirname, 'src');
 const DIR_BUILD = path.resolve(__dirname, 'dist');
-const DIR_ASSETS = 'assets';
-const DIR_IMAGES = `${DIR_ASSETS}/images/`;
-const DIR_ICONS = `${DIR_ASSETS}/icons/`;
-const DIR_ICONS_COLORED = `${DIR_ICONS}/colored/`;
-const DIR_FONTS = `${DIR_ASSETS}/fonts/`;
+const DIR_ASSETS = path.resolve(DIR_SRC, 'assets');
+// const DIR_SOUNDS = path.resolve(DIR_ASSETS, 'sounds');
+const DIR_IMAGES = path.resolve(DIR_ASSETS, 'images');
+const DIR_ICONS = path.resolve(DIR_ASSETS, 'icons');
+const DIR_ICONS_COLORED = path.resolve(DIR_ICONS, 'colored');
+// const DIR_FONTS = path.resolve(DIR_ASSETS, 'fonts');
 const DIR_PUBLIC = '/';
 
 module.exports = {
@@ -32,7 +33,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.css', '.scss', '.svg'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      variables: path.resolve(__dirname, 'src/sass/variables.scss'),
+      variables: `${DIR_SRC}/sass/variables.scss`,
     },
     modules: [
       DIR_SRC,
@@ -90,14 +91,29 @@ module.exports = {
         use: ['css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
-        test: /\.(jpg|png|gif)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: DIR_IMAGES,
+        test: /\.(jpe?g|png|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/',
+            },
           },
-        }],
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              pngquant: {
+                quality: '65-90',
+                speed: 4,
+              },
+              mozjpeg: {
+                progressive: true,
+                quality: 85,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(eot|ttf|woff|woff2)$/,
@@ -105,14 +121,14 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: DIR_FONTS,
+            outputPath: 'assets/fonts/',
           },
         }],
       },
       {
         test: /\.svg$/,
         exclude: [
-          path.resolve(__dirname, `${DIR_SRC}/${DIR_ICONS_COLORED}`),
+          DIR_ICONS_COLORED,
         ],
         use: [
           'svg-sprite-loader',
@@ -135,7 +151,7 @@ module.exports = {
       {
         test: /\.svg$/,
         include: [
-          path.resolve(__dirname, `${DIR_SRC}/${DIR_ICONS_COLORED}`),
+          DIR_ICONS_COLORED,
         ],
         use: 'svg-sprite-loader',
       },
@@ -167,10 +183,10 @@ module.exports = {
     }),
     new ExtractTextPlugin('[hash].main.css'),
     new FaviconsWebpackPlugin({
-      logo: `${DIR_IMAGES}favicon.png`,
+      logo: `${DIR_IMAGES}/favicon.png`,
       background: '#fff',
-      emitStats: true,
-      title: 'Atlant',
+      emitStats: false,
+      title: 'Atlant DEX',
     }),
   ],
 };

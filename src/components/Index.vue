@@ -1,8 +1,6 @@
 <template lang="pug">
 .wrapper
-  TheHeader
   router-view
-  TheFooter
 </template>
 
 <script>
