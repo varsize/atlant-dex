@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const DIR_SRC = path.resolve(__dirname, 'src');
 const DIR_BUILD = path.resolve(__dirname, 'dist');
@@ -165,5 +166,11 @@ module.exports = {
       openAnalyzer: false,
     }),
     new ExtractTextPlugin('[hash].main.css'),
+    new FaviconsWebpackPlugin({
+      logo: `${DIR_IMAGES}favicon.png`,
+      background: '#fff',
+      emitStats: true,
+      title: 'Atlant',
+    }),
   ],
 };
