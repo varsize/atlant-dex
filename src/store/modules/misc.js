@@ -3,6 +3,7 @@ import {getScreenType} from 'services/misc';
 export default {
   state: {
     screenType: '',
+    showSidebar: true,
   },
   getters: {
     isMobile(state) {
@@ -12,6 +13,9 @@ export default {
   mutations: {
     updateScreenType(state) {
       state.screenType = getScreenType();
+    },
+    toggleSidebar(state) {
+      state.showSidebar = !state.showSidebar;
     },
   },
   namespaced: true,

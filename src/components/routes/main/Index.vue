@@ -1,8 +1,9 @@
 <template lang='pug'>
 .main
-  .main__sidebar
-      Sidebar
+  .main__sidebar(:class='sidebarClass')
+    Sidebar
   .main__toolbar
+    Toolbar
   .main__content
     .main__header
       TheHeader
@@ -18,12 +19,23 @@
 import Tile from 'components/common/Tile';
 import Sidebar from 'components/routes/main/Sidebar';
 import TheHeader from 'components/global/TheHeader';
+import Toolbar from 'components/routes/main/Toolbar';
+import {mapState} from 'vuex';
 
 export default {
+  computed: {
+    ...mapState('misc', {
+      showSidebar: 'showSidebar',
+    }),
+    sidebarClass() {
+      return 'main__sidebar' + (this.showSidebar ? '--show' : '');
+    },
+  },
   components: {
     Tile,
     Sidebar,
     TheHeader,
+    Toolbar,
   },
 };
 
@@ -32,13 +44,19 @@ export default {
 <style lang="scss">
   .main {
     display: flex;
+    width: 100%;
     &__sidebar {
-      max-width: 287px;
-      border: 1px solid black;
+      width: 0;
+      min-width: 0;
+      overflow: hidden;
+      transition: 0.5s;
+      &--show{
+        min-width: 287px;
+        width: 287px;
+      }
     }
     &__toolbar {
       width: 64px;
-      background-color: red;
     }
     &__content {
       width: 100%;
