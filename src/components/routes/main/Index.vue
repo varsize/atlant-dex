@@ -12,6 +12,8 @@
         div sssssssssssssss
       Tile(title="buy" padding)
         div sssssssssssssss
+      Tile(title='')
+        div MAKE AN ORDER
       div CHART
 </template>
 
