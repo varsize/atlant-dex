@@ -8,6 +8,7 @@
     .main__header
       TheHeader
     .main__tiles
+      BuySell
       Tile(title="history of trades")
         div sssssssssssssss
       Tile(title="buy" padding)
@@ -22,6 +23,8 @@ import Tile from 'components/common/Tile';
 import Sidebar from 'components/routes/main/Sidebar';
 import TheHeader from 'components/global/TheHeader';
 import Toolbar from 'components/routes/main/Toolbar';
+import BuySell from 'components/routes/main/BuySell';
+
 import {mapState} from 'vuex';
 
 export default {
@@ -38,6 +41,7 @@ export default {
     Sidebar,
     TheHeader,
     Toolbar,
+    BuySell,
   },
 };
 
