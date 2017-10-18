@@ -33,11 +33,21 @@ ul {
   list-style: none;
 }
 
-select, input {
+select {
   padding: 0;
   outline: 0;
   border-width: 0;
   font-family: inherit;
+}
+
+input {
+  padding: 8px;
+  outline: 0;
+  border-radius: 2px;
+  border: 1px solid #7ed321;
+  background-color: rgba(184, 233, 134, 0.1);
+  font-family: inherit;
+  color: #fff;
 }
 
 button {

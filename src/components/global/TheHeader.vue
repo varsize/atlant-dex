@@ -52,7 +52,7 @@ export default {
     align-items: center;
     justify-content: space-between;
 
-    padding: 17px 28px;
+    padding: 12px 28px;
     line-height: 22px;
     width: 100%;
     color: #fff;
