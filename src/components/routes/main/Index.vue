@@ -15,7 +15,8 @@
       .main__tile.main__tile--map
         BuySell
       .main__tile
-        BuySell
+        TileHeader(title="Open orders")
+        Orders
       .main__tile
         BuySell
       .main__tile
@@ -26,10 +27,12 @@
 
 <script>
 import Tile from 'components/common/Tile';
+import TileHeader from 'components/common/TileHeader';
 import Sidebar from 'components/routes/main/Sidebar';
 import TheHeader from 'components/global/TheHeader';
 import Toolbar from 'components/routes/main/Toolbar';
 import BuySell from 'components/routes/main/BuySell';
+import Orders from 'components/routes/main/Orders';
 import {mapState} from 'vuex';
 
 export default {
@@ -49,11 +52,14 @@ export default {
     TheHeader,
     Toolbar,
     BuySell,
+    Orders,
+    TileHeader,
   },
 };
 </script>
 
 <style lang="scss">
+  @import '~variables';
   .main {
     display: flex;
     width: 100%;
@@ -79,6 +85,8 @@ export default {
     }
     &__tile {
       flex-grow: 1;
+      border: 1px solid #182235;
+      background-color: $color_primary_1;
       &--buysell {
         flex-basis: 20%;
       }
