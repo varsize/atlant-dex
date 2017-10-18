@@ -2,16 +2,16 @@
 .buySell
   .buySell__header
     Icon.buySell__flag(id="flag")
-    .buySell__option.buySell__option--active Buy
-    .buySell__option Sell
+    .buySell__tab(@click="isBuy = true", :class="{'buySell__tab--active': isBuy}") Buy
+    .buySell__tab(@click="isBuy = false", :class="{'buySell__tab--active': !isBuy}") Sell
   .buySell__main
-    .buySell__orderTypes
-      .buySell__orderTypeContainer
+    .buySell__types
+      .buySell__typeWrapper
         Icon.buySell__radio(id='circle')
-        .buySell__orderType MARKET
-      .buySell__orderTypeContainer
+        .buySell__type MARKET
+      .buySell__typeWrapper
         Icon.buySell__radio.buySell__radio--active(id='circle-active')
-        .buySell__orderType.buySell__orderType--active LIMIT
+        .buySell__type.buySell__type--active LIMIT
     .buySell__label Amount to buy
     input.buySell__input
     .buySell__label Total
@@ -19,7 +19,7 @@
     .buySell__label Price
     input.buySell__input
     button.buySell__button PLACE ORDER
-    li.buySell__note Do not forget to top up the trade balance
+    div.buySell__note Do not forget to top up the trade balance
 </template>
 
 <script>
@@ -28,6 +28,7 @@ import Icon from 'components/common/Icon';
 export default {
   data() {
     return {
+      isBuy: true,
     };
   },
   computed: {
@@ -48,48 +49,62 @@ export default {
     flex-direction: column;
     align-items: center;
     border: 1px solid #182235;
-    width: 250px;
     &__header{
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #182235;
+      justify-content: center;
       width: 100%;
-      padding: 24px 35px 0 35px;
+      padding-top: 24px;
+      border-bottom: 1px solid #182235;
     }
     &__flag{
       width: 7px;
       height: 10px;
-      margin-right: 15px;
+      margin-right: 8px;
     }
-    &__option{
-      margin-right: 15px;
-      padding: 10px 15px;
+    &__tab{
+      padding: 4px 15px;
       font-weight: bold;
+      font-size: 12px;
+      text-transform: uppercase;
+      line-height: 100%;
+      position: relative;
+      cursor: pointer;
+      &:first-of-type {
+        margin-right: 15px;
+      }
       &--active{
         color: #7ed321;
         border: 1px solid #182235;
-        border-bottom: 1px solid $color_primary_1;
+        border-bottom: 0;
+        &::after {
+          content: "";
+          width: 10px;
+          height: 1px;
+          background-color: #03354f;
+          display: block;
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 100%;
+        }
       }
     }
-    &__main{
-      padding: 0 35px 82px 35px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    &__main {
+      padding: 34px;
     }
-    &__orderTypes{
+    &__types{
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      margin-top: 40px;
       margin-bottom: 30px;
     }
-    &__orderTypeContainer{
+    &__typeWrapper{
       display: flex;
       flex-direction: row;
     }
-    &__orderType{
+    &__type{
       font-size: 12px;
       font-weight: bold;
       color: #9b9b9b;
@@ -109,6 +124,9 @@ export default {
       margin-top: 12px;
       font-size: 12px;
     }
+    &__input {
+      width: 100%;
+    }
     &__button{
       margin-top: 34px;
       width: 100%;
@@ -122,6 +140,7 @@ export default {
       margin-top: 38px;
       font-size: 9px;
       font-weight: 300;
+      text-align: center;
       list-style: none;
       &::before{
         content: "• ";

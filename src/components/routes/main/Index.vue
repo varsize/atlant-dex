@@ -8,14 +8,20 @@
     .main__header
       TheHeader
     .main__tiles
-      BuySell
-      Tile(title="history of trades")
-        div sssssssssssssss
-      Tile(title="buy" padding)
-        div sssssssssssssss
-      Tile(title='')
-        div MAKE AN ORDER
-      div CHART
+      .main__tile.main__tile--buysell
+        BuySell
+      .main__tile.main__tile--chart
+        BuySell
+      .main__tile.main__tile--map
+        BuySell
+      .main__tile
+        BuySell
+      .main__tile
+        BuySell
+      .main__tile
+        BuySell
+      .main__tile
+        BuySell
 </template>
 
 <script>
@@ -32,7 +38,9 @@ export default {
       showSidebar: 'showSidebar',
     }),
     sidebarClass() {
-      return 'main__sidebar' + (this.showSidebar ? '--show' : '');
+      if (this.showSidebar) {
+        return 'main__sidebar--show';
+      }
     },
   },
   components: {
@@ -46,7 +54,6 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "~gridstack/dist/gridstack";
   .main {
     display: flex;
     width: 100%;
@@ -65,6 +72,22 @@ export default {
     }
     &__content {
       width: 100%;
+    }
+    &__tiles {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__tile {
+      flex-grow: 1;
+      &--buysell {
+        flex-basis: 20%;
+      }
+      &--chart {
+        flex-basis: 40%;
+      }
+      &--map {
+        flex-basis: 40%;
+      }
     }
   }
 </style>
