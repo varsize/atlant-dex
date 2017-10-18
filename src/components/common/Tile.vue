@@ -1,29 +1,16 @@
 <template lang='pug'>
 .tile(:class="{'tile--padding': padding}")
-  Header(v-if="title", :title="title")
   slot
 </template>
 
 <script>
-import Icon from './Icon';
-import Header from './Header';
-
 export default {
   props: {
     padding: {
       type: Boolean,
-      default: true,
+      default: false,
       required: false,
     },
-    title: {
-      type: String,
-      default: '',
-      required: false,
-    },
-  },
-  components: {
-    Icon,
-    Header,
   },
 };
 </script>
@@ -32,7 +19,7 @@ export default {
 @import "~variables";
 .tile {
   border: 1px solid #182235;
-  background-color: cyan;
+  background-color: $color_primary_1;
   &--padding {
     $padding: 26px;
     padding: $padding;

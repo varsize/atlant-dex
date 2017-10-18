@@ -43,12 +43,10 @@ export default {
 </script>
 
 <style lang='scss'>
-  @import "~variables";
   .buySell {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #182235;
     &__header{
       display: flex;
       align-items: center;

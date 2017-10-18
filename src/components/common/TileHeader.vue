@@ -1,7 +1,8 @@
 <template lang='pug'>
-.header(:class="{'header--center': center}")
-    Icon.header__flag(id="flag")
-    .header__title {{title}}
+.tileHeader(:class="{'header--center': center}")
+  .tileHeader__wrapper
+    Icon.tileHeader__flag(id="flag")
+    .tileHeader__title {{title}}
 </template>
 
 <script>
@@ -27,10 +28,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header {
+.tileHeader {
+  $padding: 26px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: $padding;
+  padding-bottom: $padding;
   &__title {
     color: #fff;
     font-size: 12px;
@@ -41,6 +45,9 @@ export default {
     width: 7px;
     height: 10px;
     margin-right: 15px;
+  }
+  &__wrapper {
+    display: flex;
   }
   &--center {
     justify-content: center;
