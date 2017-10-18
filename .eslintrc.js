@@ -11,11 +11,25 @@ module.exports = {
     process: true,
     require: true,
   },
+  plugins: ['import'],
   extends: ['plugin:vue/recommended', 'google'],
   rules: {
 		'max-len': [2, 100],
     'require-jsdoc': 0,
     'linebreak-style': 0,
+    'import/first': 2,
+    'import/order': [
+      2,
+      {
+        'newlines-between': 'never',
+      }
+    ],
+    'import/newline-after-import': [
+      2,
+      {
+        count: 1,
+      }
+    ],
     'vue/valid-template-root': 0,
     'vue/require-prop-types': 2,
     'vue/no-dupe-keys': 2,

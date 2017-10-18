@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-Vue.use(Vuex);
-
 import misc from './modules/misc';
 import localization from './modules/localization';
+
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {

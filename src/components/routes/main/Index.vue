@@ -24,7 +24,6 @@ import Sidebar from 'components/routes/main/Sidebar';
 import TheHeader from 'components/global/TheHeader';
 import Toolbar from 'components/routes/main/Toolbar';
 import BuySell from 'components/routes/main/BuySell';
-
 import {mapState} from 'vuex';
 
 export default {
