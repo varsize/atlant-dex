@@ -2,13 +2,16 @@
 table.orders
   tbody.orders__body
     tr.orders__row(v-for="i in 25")
-      td.orders__cell {{(getType(i)) ? 'Buy' : 'Sell'}}
-        td.orders__square(:class="{'orders__square--buy': getType(i),'orders__square--sell': !getType(i)}")
-        td.orders__type
-      td.orders__cell {{getItem(i).eth}}
-      td.orders__cell {{getItem(i).atl}}
-      td.orders__cell {{getItem(i).atl}}
+      td.orders__cell
+        .orders__typeWrapper
+          .orders__square(:class="{'orders__square--buy': getType(i), 'orders__square--sell': !getType(i)}")
+          .orders__type {{(getType(i)) ? 'Buy' : 'Sell'}}
+      td.orders__cell {{getItem(i).eth.toFixed(3)}}
+      td.orders__cell {{getItem(i).atl.toFixed(3)}}
+      td.orders__cell {{getItem(i).atl.toFixed(3)}}
       td.orders__cell {{getItem(i).date}}
+      td.orders__cell
+        Icon(id="trash")
   tfoot.orders__header
     tr
       th.orders__title Type
@@ -45,7 +48,7 @@ export default {
       return this.items[index % 2];
     },
     getType(index) {
-      return this.getItem(index).type;
+      return this.getItem(index).buy;
     },
   },
   components: {
@@ -59,6 +62,11 @@ export default {
 .orders {
   width: 100%;
   &__cell {
+    padding-bottom: 4px;
+  }
+  &__typeWrapper {
+    display: flex;
+    align-items: center;
   }
   &__type {
     text-transform: uppercase;
@@ -67,6 +75,8 @@ export default {
     $size: 8px;
     width: $size;
     height: $size;
+    border-radius: 1px;
+    margin-right: 16px;
     &--buy {
       background-color: #7ed321;
     }

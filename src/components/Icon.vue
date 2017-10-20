@@ -1,17 +1,10 @@
 <template lang="pug">
-svg(:class="baseClass")
+svg.svgIcon
   use(:xlink:href="`#${id}`")
 </template>
 
 <script>
 export default {
-  computed: {
-    baseClass() {
-      const main = 'svgIcon';
-      const modifier = (this.id) ? ` ${main}--${this.id}` : '';
-      return `${main}${modifier}`;
-    },
-  },
   props: {
     id: {
       type: [String, Number],
@@ -22,11 +15,10 @@ export default {
 };
 </script>
 
-<style lang="scss" module>
+<style lang="scss">
 .svgIcon{
-  width: 16px;
-  height: 16px;
-  display: block;
-  fill: inherit;
+  $size: 16px;
+  width: $size;
+  height: $size;
 }
 </style>

@@ -65,4 +65,9 @@ img, svg {
   display: block;
   flex-shrink: 0;
   max-width: 100%;
+  fill: inherit;
+}
+
+td {
+  padding: 0;
 }

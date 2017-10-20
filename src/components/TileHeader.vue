@@ -28,13 +28,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~variables";
 .tileHeader {
-  $padding: 26px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: $padding;
-  padding-bottom: $padding;
+  margin-bottom: 26px;
   &__title {
     color: #fff;
     font-size: 12px;
@@ -45,6 +44,7 @@ export default {
     width: 7px;
     height: 10px;
     margin-right: 15px;
+    fill: $color_yellow;
   }
   &__wrapper {
     display: flex;

@@ -14,15 +14,13 @@
         BuySell
       .main__tile.main__tile--map
         PropertyMap
-      .main__tile
+      .main__tile.main__tile--history
+        BuySell
+      .main__tile.main__tile--book
+        BuySell
+      .main__tile.main__tile--orders.main__tile--padding
         TileHeader(title="Open orders")
         Orders
-      .main__tile
-        BuySell
-      .main__tile
-        BuySell
-      .main__tile
-        BuySell
 </template>
 
 <script>
@@ -124,6 +122,18 @@ export default {
     }
     &--map {
       flex-basis: 40%;
+    }
+    &--history {
+      flex-basis: 20%;
+    }
+    &--book {
+      flex-basis: 40%;
+    }
+    &--orders {
+      flex-basis: 40%;
+    }
+    &--padding {
+      padding: 26px;
     }
   }
 }
