@@ -1,7 +1,7 @@
 <template lang='pug'>
 table.orders
   tbody.orders__body
-    tr.orders__row(v-for="i in 25")
+    tr.orders__row(v-for="i in 7")
       td.orders__cell
         .orders__typeWrapper
           .orders__square(:class="{'orders__square--buy': getType(i), 'orders__square--sell': !getType(i)}")
@@ -11,7 +11,7 @@ table.orders
       td.orders__cell {{getItem(i).atl.toFixed(3)}}
       td.orders__cell {{getItem(i).date}}
       td.orders__cell
-        Icon(id="trash")
+        Icon.orders__trash(id="trash")
   tfoot.orders__header
     tr
       th.orders__title Type
@@ -19,6 +19,7 @@ table.orders
       th.orders__title ETH
       th.orders__title ETH/ETH
       th.orders__title Date
+      th.orders__title
 </template>
 
 <script>
@@ -59,16 +60,25 @@ export default {
 </script>
 
 <style lang='scss'>
+@import "~variables";
 .orders {
   width: 100%;
   &__cell {
     padding-bottom: 4px;
+    text-align: center;
+  }
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    color: lighten(desaturate(adjust-hue($color_primary_1, 9), 47.23), 11.96);
   }
   &__typeWrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   &__type {
+    width: 25%;
     text-transform: uppercase;
   }
   &__square  {
@@ -83,6 +93,11 @@ export default {
     &--sell {
       background-color: #f33a3a;
     }
+  }
+  &__trash {
+    width: 7px;
+    height: 9px;
+    fill: $color_yellow;
   }
 }
 </style>

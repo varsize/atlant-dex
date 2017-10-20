@@ -20,7 +20,12 @@
         BuySell
       .main__tile.main__tile--orders.main__tile--padding
         TileHeader(title="Open orders")
-        Orders
+        .main__orders
+          Orders
+        .main__ordersSep
+        TileHeader(title="Completed orders")
+        .main__orders
+          Orders
 </template>
 
 <script>
@@ -86,6 +91,7 @@ export default {
 @import '~variables';
 
 .main {
+  $tilePadding: 32px;
   display: flex;
   width: 100%;
   &__sidebar {
@@ -107,6 +113,16 @@ export default {
   &__tiles {
     display: flex;
     flex-wrap: wrap;
+  }
+  &__orders {
+    margin-left: -$tilePadding;
+  }
+  &__ordersSep {
+    $margin: 18px;
+    width: 100%;
+    margin-top: $margin;
+    margin-bottom: $margin + 8;
+    border: 1px solid #032537;
   }
   &__tile {
     flex-grow: 1;
@@ -131,7 +147,7 @@ export default {
       flex-basis: 40%;
     }
     &--padding {
-      padding: 26px;
+      padding: $tilePadding;
     }
   }
 }
