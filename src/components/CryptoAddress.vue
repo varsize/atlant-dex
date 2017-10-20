@@ -174,6 +174,7 @@ export default {
     height: 21px;
     width: 29px;
     margin-right: 14px;
+    fill: $color_yellow;
   }
 }
 </style>
