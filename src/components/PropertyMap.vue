@@ -1,9 +1,10 @@
 <template lang='pug'>
 .propertyMap
+  .propertyMap__data GOVNO
 </template>
 
 <script>
-import Icon from 'components/common/Icon';
+import Icon from './Icon';
 
 export default {
   data() {
@@ -11,8 +12,8 @@ export default {
       locationMap: {},
       marker: {},
       coordinates: {
-        lat: 40.667621,
-        lng: -73.963189,
+        lat: 55.748260,
+        lng: 37.540829,
       },
     };
   },
@@ -54,23 +55,14 @@ export default {
     ],
     };
     this.locationMap = new google.maps.Map(element, options);
-    // const image = {
-    //   path:
-    //   'M25.35,0A25.38,25.38,0,0,0,0,25.35C0,42.7,22.69,68.17,23.65,69.24a2.28,
-    // 2.28,0,0,0,3.4,0C28,68.17,50.7,42.7,50.7,25.35A25.38,25.38,0,0,0,25.35,0Zm0,
-    // 38.11A12.75,12.75,0,1,1,38.11,25.35,12.77,12.77,0,0,1,25.35,38.11Z',
-    //   strokeOpacity: 0,
-    //   strokeWeight: 1,
-    //   fillColor: '#00a0ff',
-    //   fillOpacity: 1,
-    //   rotation: 0,
-    //   scale: 1,
-    //   anchor: new google.maps.Point(25, 67),
-    // };
+    const image = {
+      url: 'src/assets/images/pointer.png',
+      anchor: new google.maps.Point(15, 40),
+    };
     this.marker = new google.maps.Marker({
       position: this.coordinates,
       map: this.locationMap,
-      // icon: image,
+      icon: image,
       animation: google.maps.Animation.DROP,
     });
   },
@@ -85,10 +77,14 @@ export default {
 .propertyMap {
   height: 100%;
   position: relative;
-  &__icon{
-    $size: 40px;
-    height: $size;
-    width: $size;
+  &__data {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+    background-color: red;
   }
 }
 </style>
