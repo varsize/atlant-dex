@@ -99,11 +99,12 @@ export default {
     width: 100%;
   }
   &__button{
+    font-family: 'Roboto';
     margin-top: 34px;
     width: 100%;
     font-size: 12px;
     color: #02334d;
-    background-image: linear-gradient(180deg, #fae045 0%, #f0650a 100%);
+    background: linear-gradient(to bottom,#1e5799 0,#f3de54 0,#e3a83b 100%);
     border: none;
     font-weight: 700;
   }
