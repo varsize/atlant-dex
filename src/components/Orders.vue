@@ -79,6 +79,7 @@ export default {
   }
   &__type {
     width: 25%;
+    text-align: left;
     text-transform: uppercase;
   }
   &__square  {
