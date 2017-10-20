@@ -9,5 +9,6 @@ module.exports = merge(baseConfig, {
         NODE_ENV: '"production"',
       },
     }),
+    new webpack.optimize.UglifyJsPlugin(),
   ],
 });
