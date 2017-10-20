@@ -13,7 +13,7 @@
       .main__tile.main__tile--chart
         BuySell
       .main__tile.main__tile--map
-        BuySell
+        PropertyMap
       .main__tile.main__tile--history
         BuySell
       .main__tile.main__tile--book
@@ -33,6 +33,7 @@ import Sidebar from './Sidebar';
 import Toolbar from './Toolbar';
 import BuySell from './BuySell';
 import Orders from './Orders';
+import PropertyMap from './PropertyMap';
 
 export default {
   computed: {
@@ -73,6 +74,7 @@ export default {
     BuySell,
     Orders,
     TileHeader,
+    PropertyMap,
   },
 };
 </script>
