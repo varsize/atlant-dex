@@ -13,7 +13,7 @@
       .main__tile.main__tile--chart
         BuySell
       .main__tile.main__tile--map
-        BuySell
+        PropertyMap
       .main__tile
         TileHeader(title="Open orders")
         Orders
@@ -33,6 +33,7 @@ import TheHeader from 'components/global/TheHeader';
 import Toolbar from 'components/routes/main/Toolbar';
 import BuySell from 'components/routes/main/BuySell';
 import Orders from 'components/routes/main/Orders';
+import PropertyMap from 'components/routes/main/PropertyMap';
 import {mapState} from 'vuex';
 
 export default {
@@ -54,6 +55,7 @@ export default {
     BuySell,
     Orders,
     TileHeader,
+    PropertyMap,
   },
 };
 </script>

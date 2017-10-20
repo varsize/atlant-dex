@@ -3,7 +3,7 @@ table.orders
   tbody.orders__body
     tr.orders__row(v-for="i in 25")
       td.orders__cell {{(getType(i)) ? 'Buy' : 'Sell'}}
-        td.orders__square(:class="{'orders__square--buy': getType(i), 'orders__square--sell': !getType(i)}")
+        td.orders__square(:class="{'orders__square--buy': getType(i),'orders__square--sell': !getType(i)}")
         td.orders__type
       td.orders__cell {{getItem(i).eth}}
       td.orders__cell {{getItem(i).atl}}
