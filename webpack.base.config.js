@@ -7,6 +7,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const DIR_SRC = path.resolve(__dirname, 'src');
 const DIR_BUILD = path.resolve(__dirname, 'dist');
@@ -104,12 +106,12 @@ module.exports = {
             loader: 'image-webpack-loader',
             options: {
               pngquant: {
-                quality: '65-90',
-                speed: 4,
+                quality: '65-85',
+                speed: 2,
               },
               mozjpeg: {
                 progressive: true,
-                quality: 85,
+                quality: 80,
               },
             },
           },
@@ -182,6 +184,10 @@ module.exports = {
       openAnalyzer: false,
     }),
     new ExtractTextPlugin('[hash].main.css'),
+    new StyleExtHtmlWebpackPlugin(),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async',
+    }),
     new FaviconsWebpackPlugin({
       logo: `${DIR_IMAGES}/favicon.png`,
       background: '#fff',

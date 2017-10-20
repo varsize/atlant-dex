@@ -1,5 +1,4 @@
 import Index from 'components/Index';
-import Main from 'components/routes/main/Index';
 
 export default [
   {
@@ -8,13 +7,7 @@ export default [
   },
   {
     path: '',
+    name: 'index',
     component: Index,
-    children: [
-      {
-        path: '',
-        name: 'main',
-        component: Main,
-      },
-    ],
   },
 ];
