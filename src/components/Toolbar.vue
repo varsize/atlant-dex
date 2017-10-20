@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Icon from 'components/common/Icon';
 import {mapState, mapMutations} from 'vuex';
+import Icon from './Icon';
 
 export default {
   data() {

@@ -19,7 +19,7 @@ table.orders
 </template>
 
 <script>
-import Icon from 'components/common/Icon';
+import Icon from './Icon';
 
 export default {
   data() {

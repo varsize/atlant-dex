@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import CryptoAddress from 'components/common/CryptoAddress';
-import Icon from 'components/common/Icon';
+import Icon from './Icon';
+import CryptoAddress from './CryptoAddress';
 
 export default {
   data() {

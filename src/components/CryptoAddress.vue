@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import Icon from 'components/common/Icon';
 import Qrious from 'qrious';
+import Icon from './Icon';
 
 export default {
   computed: {
