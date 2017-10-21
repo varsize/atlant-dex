@@ -5,7 +5,9 @@
     .buySell__tab(@click="isBuy = true", :class="{'buySell__tab--active': isBuy}") Buy
     .buySell__tab(@click="isBuy = false", :class="{'buySell__tab--active': !isBuy}") Sell
   .buySell__main
-    BuySellType
+    .buySell__types
+      Radio(name="type", value="market", label="Market", :onChange="setType", checked)
+      Radio(name="type", value="limit", label="Limit", :onChange="setType")
     .buySell__label Amount to buy
     input.buySell__input
     .buySell__label Total
@@ -18,21 +20,25 @@
 
 <script>
 import Icon from './Icon';
-import BuySellType from './BuySellType';
+import Radio from './Radio';
 
 export default {
   data() {
     return {
-      isBuy: true,
+      type: '',
+      isBuy: false,
     };
   },
   computed: {
   },
   methods: {
+    setType(value) {
+      this.type = value;
+    },
   },
   components: {
     Icon,
-    BuySellType,
+    Radio,
   },
 };
 
@@ -57,6 +63,11 @@ export default {
     height: 10px;
     margin-right: 8px;
     fill: $color_yellow;
+  }
+  &__types {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
   }
   &__tab{
     padding: 4px 15px;
