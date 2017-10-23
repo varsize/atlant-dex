@@ -19,6 +19,11 @@
       .main__tile.main__tile--book
         Padding
           TileHeader(title="Order book" center)
+        .d-flex.w-100
+          .main__tile
+            Book
+          .main__tile
+            Book(ask)
       .main__tile.main__tile--orders
         Padding
           Padding(bottom)
@@ -41,6 +46,7 @@ import Sidebar from './Sidebar';
 import Toolbar from './Toolbar';
 import BuySell from './BuySell';
 import Orders from './Orders';
+import Book from './Book';
 import PropertyMap from './PropertyMap';
 
 export default {
@@ -82,6 +88,7 @@ export default {
     BuySell,
     Orders,
     TileHeader,
+    Book,
     PropertyMap,
   },
 };
@@ -94,6 +101,8 @@ export default {
 @import "~sass/overrides";
 @import "~sass/global";
 @import '~variables';
+@import "~sass/bootstrap/flex";
+@import "~bootstrap/scss/utilities/sizing";
 
 .main {
   $tilePadding: 32px;
@@ -132,7 +141,7 @@ export default {
   &__tile {
     flex-grow: 1;
     border: 1px solid #182235;
-    background-color: $color_primary_1;
+    background-color: $color_blue;
     &--buysell {
       flex-basis: 20%;
     }

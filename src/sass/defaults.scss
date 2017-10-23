@@ -16,7 +16,7 @@ body {
   line-height: 1.2;
   overflow-x: hidden;
   font-family: "Roboto";
-  background-color: $color_primary_1;
+  background-color: $color_blue;
 }
 h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
   padding: 0;
@@ -70,4 +70,5 @@ img, svg {
 
 td {
   padding: 0;
+  padding-bottom: 4px;
 }
