@@ -1,6 +1,6 @@
 <template lang='pug'>
 label.radio
-  input.radio__input(type="radio", :name="name", @change="change")
+  input.radio__input(:id="`radio${_uid}`", type="radio", :name="name", @change="change")
   .radio__icon
   .radio__text(v-if="label") {{label}}
 </template>
@@ -15,13 +15,14 @@ export default {
   },
   methods: {
     change() {
+      console.log('test2?');
       this.$emit('change', this.value);
     },
   },
   mounted() {
     if (this.checked) {
       this.change();
-      document.querySelector('.radio__input').checked = true;
+      document.querySelector(`#radio${this._uid}`).checked = true;
     }
   },
   props: {
@@ -57,7 +58,7 @@ export default {
 
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 @import "~variables";
 $ROOT: "radio";
 .#{$ROOT} {
