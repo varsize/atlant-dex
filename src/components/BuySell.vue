@@ -6,8 +6,8 @@
     .buySell__tab(@click="isBuy = false", :class="{'buySell__tab--active': !isBuy}") Sell
   .buySell__main
     .buySell__types
-      Radio(name="type", value="market", label="Market", :onChange="setType", checked)
-      Radio(name="type", value="limit", label="Limit", :onChange="setType")
+      Radio(name="type", value="market", label="Market", v-model="type", checked)
+      Radio(name="type", value="limit", label="Limit", v-model="type")
     .buySell__label Amount to buy
     input.buySell__input
     .buySell__label Total
@@ -28,13 +28,6 @@ export default {
       type: '',
       isBuy: false,
     };
-  },
-  computed: {
-  },
-  methods: {
-    setType(value) {
-      this.type = value;
-    },
   },
   components: {
     Icon,

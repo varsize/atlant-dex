@@ -1,6 +1,6 @@
 <template lang='pug'>
 label.radio
-  input.radio__input(type="radio", :value="value", :name="name", @change="change", ref="input")
+  input.radio__input(type="radio", :name="name", @change="change")
   .radio__icon
   .radio__text(v-if="label") {{label}}
 </template>
@@ -9,16 +9,19 @@ label.radio
 import Icon from './Icon';
 
 export default {
+  model: {
+    prop: 'cModel',
+    event: 'change',
+  },
   methods: {
-    change(e) {
-      this.onChange(e.target.value);
+    change() {
+      this.$emit('change', this.value);
     },
   },
   mounted() {
     if (this.checked) {
-      const el = document.querySelector('.radio__input');
-      el.checked = true;
-      this.onChange(el.value);
+      this.change();
+      document.querySelector('.radio__input').checked = true;
     }
   },
   props: {
@@ -32,6 +35,10 @@ export default {
       default: '',
       required: false,
     },
+    cValue: {
+      type: [String, Number],
+      default: '',
+    },
     label: {
       type: [String, Number],
       default: '',
@@ -41,11 +48,6 @@ export default {
       type: Boolean,
       required: false,
       default: false,
-    },
-    onChange: {
-      type: Function,
-      default: () => {},
-      required: false,
     },
   },
   components: {
