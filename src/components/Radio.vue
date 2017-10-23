@@ -15,7 +15,6 @@ export default {
   },
   methods: {
     change() {
-      console.log('test2?');
       this.$emit('change', this.value);
     },
   },
