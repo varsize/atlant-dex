@@ -17,22 +17,25 @@
       .main__tile.main__tile--history
         BuySell
       .main__tile.main__tile--book
-        BuySell
-      .main__tile.main__tile--orders.main__tile--padding
-        TileHeader(title="Open orders")
-        .main__orders
+        Padding
+          TileHeader(title="Order book" center)
+      .main__tile.main__tile--orders
+        Padding
+          Padding(bottom)
+            TileHeader(title="Open orders")
           Orders
-        .main__ordersSep
-        TileHeader(title="Completed orders")
-        .main__orders
-          Orders
+          .main__ordersSep
+          Padding(bottom)
+            TileHeader(title="Completed orders")
+          .main__orders
+            Orders
 </template>
 
 <script>
 import {mapState, mapMutations, mapActions} from 'vuex';
 import TheHeader from './TheHeader';
 import TheFooter from './TheFooter';
-import Tile from './Tile';
+import Padding from './Padding';
 import TileHeader from './TileHeader';
 import Sidebar from './Sidebar';
 import Toolbar from './Toolbar';
@@ -72,7 +75,7 @@ export default {
   components: {
     TheHeader,
     TheFooter,
-    Tile,
+    Padding,
     Sidebar,
     TheHeader,
     Toolbar,
@@ -117,7 +120,7 @@ export default {
     flex-wrap: wrap;
   }
   &__orders {
-    margin-left: -$tilePadding;
+    // margin-left: -$tilePadding;
   }
   &__ordersSep {
     $margin: 18px;
@@ -147,9 +150,6 @@ export default {
     }
     &--orders {
       flex-basis: 40%;
-    }
-    &--padding {
-      padding: $tilePadding;
     }
   }
 }

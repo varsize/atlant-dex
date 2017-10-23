@@ -1,5 +1,5 @@
 <template lang='pug'>
-.tileHeader(:class="{'header--center': center}")
+.tileHeader(:class="{'tileHeader--center': center}")
   .tileHeader__wrapper
     Icon.tileHeader__flag(id="flag")
     .tileHeader__title {{title}}
@@ -33,7 +33,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 26px;
   &__title {
     color: #fff;
     font-size: 12px;

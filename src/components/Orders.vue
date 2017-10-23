@@ -65,21 +65,17 @@ export default {
   width: 100%;
   &__cell {
     padding-bottom: 4px;
-    text-align: center;
   }
   &__title {
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
     color: lighten(desaturate(adjust-hue($color_primary_1, 9), 47.23), 11.96);
   }
   &__typeWrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
   }
   &__type {
-    width: 25%;
-    text-align: left;
     text-transform: uppercase;
   }
   &__square  {
