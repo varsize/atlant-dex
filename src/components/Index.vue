@@ -15,7 +15,10 @@
       .main__tile.main__tile--map
         PropertyMap
       .main__tile.main__tile--history
-        BuySell
+        Padding
+          Padding(bottom)
+            TileHeader(title="History of trades" center)
+          History
       .main__tile.main__tile--book
         Padding
           TileHeader(title="Order book" center)
@@ -47,6 +50,7 @@ import Toolbar from './Toolbar';
 import BuySell from './BuySell';
 import Orders from './Orders';
 import Book from './Book';
+import History from './History';
 import PropertyMap from './PropertyMap';
 
 export default {
@@ -89,6 +93,7 @@ export default {
     Orders,
     TileHeader,
     Book,
+    History,
     PropertyMap,
   },
 };
