@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import GoogleMapsLoader from 'google-maps';
 import Icon from './Icon';
 
 export default {
@@ -34,53 +35,58 @@ export default {
     };
   },
   mounted() {
-    const element = document.querySelector('.propertyMap__map');
-    const options = {
-      zoom: 12,
-      center: this.coordinates,
-      scrollwheel: false,
-      fullscreenControl: false,
-      zoomControl: false,
-      mapTypeControl: false,
-      scaleControl: false,
-      panControl: false,
-      navigationControl: false,
-      streetViewControl: false,
-      styles: [
-        {
-          featureType: 'all',
-          elementType: 'all',
-          stylers: [
+    GoogleMapsLoader.load((google) => {
+      const element = document.querySelector('.propertyMap__map');
+      const options = {
+        zoom: 12,
+        center: this.coordinates,
+        scrollwheel: false,
+        fullscreenControl: false,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        panControl: false,
+        navigationControl: false,
+        streetViewControl: false,
+        styles: [
           {
-            invert_lightness: true,
-          },
-          {
-            saturation: 10,
-          },
-          {
-            lightness: 30,
-          },
-          {
-            gamma: 0.5,
-          },
-          {
-            hue: '#435158',
-          },
-        ],
-      },
-    ],
-    };
-    this.locationMap = new google.maps.Map(element, options);
-    const image = {
-      url: 'src/assets/images/pointer.png',
-      anchor: new google.maps.Point(15, 40),
-    };
-    this.marker = new google.maps.Marker({
-      position: this.coordinates,
-      map: this.locationMap,
-      icon: image,
-      animation: google.maps.Animation.DROP,
+            featureType: 'all',
+            elementType: 'all',
+            stylers: [
+            {
+              invert_lightness: true,
+            },
+            {
+              saturation: 10,
+            },
+            {
+              lightness: 30,
+            },
+            {
+              gamma: 0.5,
+            },
+            {
+              hue: '#435158',
+            },
+          ],
+        },
+      ],
+      };
+      this.locationMap = new google.maps.Map(element, options);
+      const image = {
+        url: 'src/assets/images/pointer.png',
+        anchor: new google.maps.Point(15, 40),
+      };
+      this.marker = new google.maps.Marker({
+        position: this.coordinates,
+        map: this.locationMap,
+        icon: image,
+        animation: google.maps.Animation.DROP,
+      });
     });
+  },
+  created() {
+    GoogleMapsLoader.KEY = 'AIzaSyBZrLwDh6l5AW1F5Em3pPlABhQ3fmp__AM';
   },
   components: {
     Icon,
