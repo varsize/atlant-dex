@@ -11,7 +11,7 @@
       .main__tile.main__tile--buysell
         BuySell
       .main__tile.main__tile--chart
-        BuySell
+        Chart
       .main__tile.main__tile--map
         PropertyMap
       .main__tile.main__tile--history
@@ -45,6 +45,7 @@ import TileHeader from './TileHeader';
 import Sidebar from './Sidebar';
 import Toolbar from './Toolbar';
 import BuySell from './BuySell';
+import Chart from './Chart';
 import Orders from './Orders';
 import Book from './Book';
 import PropertyMap from './PropertyMap';
@@ -90,6 +91,7 @@ export default {
     TileHeader,
     Book,
     PropertyMap,
+    Chart,
   },
 };
 </script>

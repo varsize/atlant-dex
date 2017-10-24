@@ -76,6 +76,7 @@ export default {
       width: $size;
       transform: rotate(90deg);
       margin: 0 10px;
+      fill: #e9bd24;
     }
     &__dropdown {
       position: relative;
@@ -97,7 +98,7 @@ export default {
       margin-left: 10px;
       position: absolute;
       right: 5px;
-      margin-top: -13px;
+      top: 3px;
       z-index: -1;
     }
     &__price{
@@ -134,6 +135,7 @@ export default {
       $size: 14px;
       height: $size;
       width: $size;
+      fill: #7ed321;
       &:hover {
         cursor: pointer;
       }
