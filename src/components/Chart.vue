@@ -19,6 +19,7 @@ export default {
       chart: {
         height: '100%',
         spacing: [20, 40, 0, 20],
+        reflow: false,
       },
       credits: {enabled: false},
       navigator: {enabled: false},
