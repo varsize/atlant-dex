@@ -19,7 +19,7 @@ export default {
     Highstock.stockChart('chart', {
       chart: {
         spacing: [50, 0, 0, 0],
-        reflow: true, // Whether to reflow the chart to fit the width of the container div on resizing the window. DEFAUL 'true'
+        reflow: false, // Whether to reflow the chart to fit the width of the container div on resizing the window. DEFAUL 'true'
         backgroundColor: '#03354f',
         style: {
           fontFamily: 'Roboto',
