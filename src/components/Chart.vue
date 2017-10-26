@@ -1,10 +1,12 @@
 <template lang='pug'>
 div.chart
   div#chart
+  button(@click='getData') Attempt new data
 </template>
 
 <script>
 import Highstock from 'highcharts/highstock';
+import {mapActions} from 'vuex';
 
 export default {
   data() {
@@ -13,6 +15,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions('trade', {
+      getData: 'getTradeData',
+    }),
   },
   mounted() {
     Highstock.stockChart('chart', {

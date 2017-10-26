@@ -1,4 +1,4 @@
-export const baseURL = '/';
+export const baseURL = 'https://apiex.atlant.io';
 export const timeout = 30000;
 export const hubURL = `${baseURL}signalr/hubs`;
 export const hubName = 'mainHub';
