@@ -16,7 +16,7 @@
       .propertyMap__info
         span.propertyMap__param Type:
         span Multi-purpose
-      button.propertyMap__button More details {{getCurrency}}
+      button.propertyMap__button More details
 </template>
 
 <script>
@@ -56,7 +56,7 @@ export default {
         center: this.coordinates,
         scrollwheel: false,
         fullscreenControl: false,
-        // zoomControl: false,
+        zoomControl: false,
         mapTypeControl: false,
         scaleControl: false,
         panControl: false,
@@ -116,14 +116,14 @@ export default {
   &__map{
     height: 100%;
   }
-  // &__container {
-  //   width: 100%;
-  //   height: 100%;
-  //   background-color: rgba(3, 53, 79, 0.5);
-  //   position: absolute;
-  //   z-index: 2;
-  //   top: 0;
-  // }
+  &__container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 53, 79, 0.5);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+  }
   &__data {
     margin-top: 105px;
     margin-left: 50px;
