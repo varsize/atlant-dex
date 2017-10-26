@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
 import Icon from './Icon';
 import Dropdown from './Dropdown';
 
@@ -16,11 +17,16 @@ export default {
       selected: '',
       currencies: [
         'ATL',
-        'ATL1',
-        'ATL2',
-        'ATL3',
+        'ATLE',
+        'ATLF',
+        'ATLG',
       ],
     };
+  },
+  methods: {
+    ...mapMutations('trade', {
+      setCurrency: 'setCurrency',
+    }),
   },
   components: {
     Icon,

@@ -12,9 +12,12 @@ export default {
     setChartData(state, chartData) {
       state.chartData = chartData;
     },
+    setCurrency(state, currency) {
+      state.pair = 'BTC_' + currency;
+    },
   },
   actions: {
-    updateChart({commit, state}) {
+    loadChart({commit, state}) {
       const payload = {
         period: state.period,
         pair: state.pair,

@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     ...mapActions('trade', {
-      updateChart: 'updateChart',
+      loadChart: 'loadChart',
     }),
     getCandleTime(index) {
       return ticksToMilliseconds(this.chartData.startTicks + (this.chartData.candleTicks * index));
@@ -177,7 +177,7 @@ export default {
     },
   },
   created() {
-    this.updateChart();
+    this.loadChart();
   },
 };
 </script>
