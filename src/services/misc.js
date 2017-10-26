@@ -22,3 +22,11 @@ export const getRandomInt = (min, max) => {
   const random = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(random);
 };
+
+export const ticksToMilliseconds = (ticks) => {
+  const epochTicks = 621355968000000000;
+  const ticksPerMillisecond = 10000;
+  const jsTicks = (ticks - epochTicks) / ticksPerMillisecond;
+  const date = new Date(jsTicks);
+  return date.getTime();
+};
