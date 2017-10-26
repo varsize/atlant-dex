@@ -33,7 +33,7 @@ module.exports = {
     'vue/valid-template-root': 0,
     'vue/require-prop-types': 2,
     'vue/no-dupe-keys': 2,
-    'vue/require-valid-default-prop': 2,
+    'vue/require-valid-default-prop': 0,
     'vue/require-render-return': 2,
     'vue/v-on-style': [
       2,
