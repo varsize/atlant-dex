@@ -3,7 +3,7 @@
   .pair__label Your current pair:
   .pair__currency ETH
   Icon.pair__exchange(id="exchange")
-  Dropdown(:options="currencies" v-model="selected")
+  Dropdown.pair__dropdown(:options="currencies" v-model="selected")
 </template>
 
 <script>
@@ -38,6 +38,9 @@ export default {
     font-size: 12px;
     margin-right: 17px;
     flex-shrink: 0;
+  }
+  &__dropdown {
+    min-width: 64px;
   }
   &__currency {
     font-weight: bold;

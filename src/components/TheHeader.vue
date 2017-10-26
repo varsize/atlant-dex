@@ -1,17 +1,20 @@
 <template lang="pug">
 header.header
-  .header__block.header__block--pair
-    Pair
-  .header__block.header__block--price
-    Price
-  .header__block
-    .header__balance Trade balance:
-    Balance(currency="ETH")
-    .header__separator |
-    Balance(currency="ATL")
-    button.header__transferSafe Transfer to safe balance
-  .header__block
-    Icon.header__info(id="info")
+  .header__group
+    .header__block.header__block--pair
+      Pair
+    .header__block
+      Price
+  .header__group
+    .header__block
+      .header__balance Trade balance:
+      Balance(currency="ETH")
+      .header__separator |
+      Balance(currency="ATL")
+      button.header__transfer Transfer to safe balance
+  .header__group
+    .header__block
+      Icon.header__info(id="info")
 </template>
 
 <script>
@@ -40,18 +43,19 @@ export default {
   .header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 12px 28px;
     width: 100%;
     color: #fff;
+    &__group {
+      display: flex;
+      align-items: center;
+    }
     &__block {
       display: flex;
       align-items: center;
       &--pair {
-        flex-basis: 16%;
         margin-right: 18px;
-      }
-      &--price {
-        margin-right: 70px;
       }
     }
     &__balance {
@@ -62,7 +66,7 @@ export default {
     &__separator {
       margin: 0 11px;
     }
-    &__transferSafe {
+    &__transfer {
       font-size: 12px;
       margin-left: 26px;
       border-color: #e9bd24;
@@ -73,7 +77,7 @@ export default {
       $size: 16px;
       height: $size;
       width: $size;
-      fill: #ffffff;
+      fill: #fff;
       &:hover {
         cursor: pointer;
       }
