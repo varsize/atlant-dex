@@ -5,8 +5,13 @@ div.chart
 
 <script>
 import Highstock from 'highcharts/highstock';
-import {mapState, mapActions} from 'vuex';
-import {ticksToMilliseconds} from 'services/misc';
+import {
+  mapState,
+  mapActions,
+} from 'vuex';
+import {
+  ticksToMilliseconds,
+} from 'services/misc';
 
 export default {
   data() {
@@ -52,102 +57,130 @@ export default {
     createChart() {
       const prices = this.getCandlestickSeries();
       const volumes = this.getVolumeSeries();
-
+      console.log(prices);
       this.chart = Highstock.stockChart('chart', {
         chart: {
-          spacing: [50, 0, 0, 0],
-          reflow: false, // Whether to reflow the chart to fit the width of the container div on resizing the window. DEFAUL 'true'
+          renderTo: 'chart',
+          spacing: [20, 40, 0, 20],
           backgroundColor: '#03354f',
+          reflow: false, // Whether to reflow the chart to fit the width of the container div on resizing the window. DEFAUL 'true'
           style: {
             fontFamily: 'Roboto',
             fontSize: '12px',
           },
-
         },
-      },
-      yAxis: {
-        allowDecimals: true,
-        opposite: true,
-        title: {
-          text: '',
+        credits: {
+          enabled: false,
         },
-        gridLineColor: '#2b5072',
-        gridLineWidth: 2, // border height
-        labels: {
-          align: 'right',
-          x: -10,
-          y: -10,
-          style: {
-            color: '#376691',
-            fontSize: 12,
+        navigator: {
+          enabled: false,
+        },
+        rangeSelector: {
+          enabled: false,
+        },
+        scrollbar: {
+          enabled: false,
+        },
+        title: '',
+        tooltip: {
+          crosshairs: {
+            color: 'green',
+            dashStyle: 'solid',
           },
-          offset: 0,
-          lineWidth: 0,
+          shared: true,
         },
-        {
-          allowDecimals: true,
-          opposite: true,
-          title: {text: ''},
-          gridLineColor: '#2b5072',
-          gridLineWidth: 2, // border height
+        xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: {
+            day: '%d %b %Y',
+          },
+          lineColor: '#2b5072',
           labels: {
-            align: 'right',
-            x: -10,
-            y: -10,
+            align: 'center',
+            y: 30,
             style: {
               color: '#376691',
-              fontSize: 12,
+              fontSize: '12px',
             },
           },
-          offset: 0,
-          lineWidth: 0,
-        }],
-        plotOptions: {
-           candlestick: {
-              upColor: '#00ce7d',
-              upLineColor: '#00ce7d',
-              color: '#e55541',
-              lineColor: '#e55541',
-              lineWidth: 2,
+        },
+        yAxis: [{
+            allowDecimals: true,
+            opposite: false,
+            title: {
+              text: '',
             },
+            labels: {
+              align: 'left',
+              x: -20,
+              style: {
+                color: '#376691',
+                fontSize: '12px',
+              },
+            },
+            lineWidth: 0,
+            gridLineWidth: 1,
+          },
+          {
+            allowDecimals: true,
+            opposite: true,
+            title: {
+              text: '',
+            },
+            labels: {
+              align: 'right',
+              x: 40,
+              style: {
+                color: '#376691',
+                fontSize: '12px',
+              },
+            },
+            offset: 0,
+            lineWidth: 0,
+            gridLineWidth: 2,
+            gridLineColor: '#2b5072',
+          },
+        ],
+        legend: {
+          enabled: false,
         },
-        legend: {enabled: false},
+        // colors: ['#046fc4', '#434348', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1'],
         series: [{
-          name: 'Price',
-          data: prices,
-          type: 'candlestick',
-          zIndex: 2,
-          pointPadding: 0.05,
-        },
-        {
-          name: 'Volume',
-          data: volumes,
-          type: 'column',
-          yAxis: 0,
-          color: '#376691',
-          zIndex: 1,
-          pointPadding: 0.05,
-        },
-        {
-          // type: 'column',
-          yAxis: 0,
-
-        }],
-        responsive: {
-        },
+            name: 'Price',
+            data: prices,
+            type: 'candlestick',
+            upColor: '#00ce7d',
+            upLineColor: '#00ce7d',
+            color: '#e55541',
+            lineColor: '#e55541',
+            lineWidth: 2,
+            yAxis: 1,
+            zIndex: 2,
+            pointPadding: 0.05,
+          },
+          {
+            name: 'Volume',
+            data: volumes,
+            type: 'column',
+            color: '#376691',
+            yAxis: 0,
+            zIndex: 1,
+            pointPadding: 0.05,
+          }],
       });
     },
   },
   watch: {
     candles() {
       this.$nextTick().then(() => {
-        (this.chart === null) ? this.createChart() : this.chart.update({
+        (this.chart === null) ? this.createChart(): this.chart.update({
           series: [{
-            data: this.getPriceSeries(),
-          },
-          {
-            data: this.getVolumeSeries(),
-          }],
+              data: this.getPriceSeries(),
+            },
+            {
+              data: this.getVolumeSeries(),
+            },
+          ],
         }, true, true);
       });
     },
