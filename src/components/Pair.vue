@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 import Icon from './Icon';
 import Dropdown from './Dropdown';
 
@@ -23,10 +23,23 @@ export default {
       ],
     };
   },
-  methods: {
-    ...mapMutations('trade', {
-      setCurrency: 'setCurrency',
+  computed: {
+    ...mapGetters('trade', {
+      getCurrency: 'getCurrency',
     }),
+  },
+  methods: {
+    ...mapActions('trade', {
+      changeCurrency: 'changeCurrency',
+    }),
+  },
+  watch: {
+    selected() {
+      this.changeCurrency(this.selected);
+    },
+  },
+  created() {
+    this.selected = this.getCurrency;
   },
   components: {
     Icon,

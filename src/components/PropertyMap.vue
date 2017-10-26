@@ -16,10 +16,12 @@
       .propertyMap__info
         span.propertyMap__param Type:
         span Multi-purpose
-      button.propertyMap__button More details
+      button.propertyMap__button More details {{getCurrency}}
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+import {getBuilding} from 'services/properties';
 import GoogleMapsLoader from 'google-maps';
 import Icon from './Icon';
 
@@ -34,6 +36,18 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters('trade', {
+      getCurrency: 'getCurrency',
+    }),
+  },
+  watch: {
+    getCurrency() {
+      this.coordinates = getBuilding(this.getCurrency).coordinates;
+      this.marker.setPosition(this.coordinates);
+      this.locationMap.panTo(this.coordinates);
+    },
+  },
   mounted() {
     GoogleMapsLoader.load((google) => {
       const element = document.querySelector('.propertyMap__map');
@@ -42,7 +56,7 @@ export default {
         center: this.coordinates,
         scrollwheel: false,
         fullscreenControl: false,
-        zoomControl: false,
+        // zoomControl: false,
         mapTypeControl: false,
         scaleControl: false,
         panControl: false,
@@ -102,14 +116,14 @@ export default {
   &__map{
     height: 100%;
   }
-  &__container {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(3, 53, 79, 0.5);
-    position: absolute;
-    z-index: 2;
-    top: 0;
-  }
+  // &__container {
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: rgba(3, 53, 79, 0.5);
+  //   position: absolute;
+  //   z-index: 2;
+  //   top: 0;
+  // }
   &__data {
     margin-top: 105px;
     margin-left: 50px;

@@ -7,6 +7,9 @@ export default {
     chartData: {},
   },
   getters: {
+    getCurrency(state) {
+      return state.pair.split('_')[1];
+    },
   },
   mutations: {
     setChartData(state, chartData) {
@@ -22,10 +25,15 @@ export default {
         period: state.period,
         pair: state.pair,
       };
+      console.log(payload);
       Trade.getChart(payload).then((res) => {
         commit('setChartData', res.data.result);
         console.log(state.chartData);
       });
+    },
+    changeCurrency({commit, dispatch}, currency) {
+      commit('setCurrency', currency);
+      dispatch('loadChart');
     },
   },
   namespaced: true,
