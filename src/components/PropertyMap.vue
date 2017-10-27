@@ -3,19 +3,19 @@
   .propertyMap__map
   .propertyMap__container
     .propertyMap__data
-      .propertyMap__address Empire business high-rise
+      .propertyMap__address {{building.info.name}}
       .propertyMap__info
         span.propertyMap__param Area code:
-        span 123317
+        span {{building.info.areaCode}}
       .propertyMap__info
         span.propertyMap__param Area:
-        span 287 723 m2
+        span {{building.info.area}}
       .propertyMap__info
         span.propertyMap__param Elevation:
-        span 239 m
+        span {{building.info.elevation}}
       .propertyMap__info
         span.propertyMap__param Type:
-        span Multi-purpose
+        span {{building.info.type}}
       BButton.propertyMap__button(color="yellow" rounded) More details
 </template>
 
@@ -31,9 +31,9 @@ export default {
     return {
       locationMap: {},
       marker: {},
-      coordinates: {
-        lat: 55.748260,
-        lng: 37.540829,
+      building: {
+        coordinates: {},
+        info: {},
       },
     };
   },
@@ -42,19 +42,25 @@ export default {
       quoteCurrency: 'quoteCurrency',
     }),
   },
+  methods: {
+    getBuildingData() {
+      this.building = getBuilding(this.quoteCurrency);
+    },
+  },
   watch: {
     quoteCurrency() {
-      this.coordinates = getBuilding(this.quoteCurrency).coordinates;
-      this.marker.setPosition(this.coordinates);
-      this.locationMap.panTo(this.coordinates);
+      this.getBuildingData();
+      this.marker.setPosition(this.building.coordinates);
+      this.locationMap.panTo(this.building.coordinates);
     },
   },
   mounted() {
+    this.getBuildingData();
     GoogleMapsLoader.load((google) => {
       const element = document.querySelector('.propertyMap__map');
       const options = {
         zoom: 12,
-        center: this.coordinates,
+        center: this.building.coordinates,
         scrollwheel: false,
         fullscreenControl: false,
         zoomControl: false,
@@ -93,7 +99,7 @@ export default {
         anchor: new google.maps.Point(15, 40),
       };
       this.marker = new google.maps.Marker({
-        position: this.coordinates,
+        position: this.building.coordinates,
         map: this.locationMap,
         icon: image,
         animation: google.maps.Animation.DROP,
