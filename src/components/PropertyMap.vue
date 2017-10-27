@@ -38,12 +38,12 @@ export default {
   },
   computed: {
     ...mapGetters('trade', {
-      getCurrency: 'getCurrency',
+      quoteCurrency: 'quoteCurrency',
     }),
   },
   watch: {
-    getCurrency() {
-      this.coordinates = getBuilding(this.getCurrency).coordinates;
+    quoteCurrency() {
+      this.coordinates = getBuilding(this.quoteCurrency).coordinates;
       this.marker.setPosition(this.coordinates);
       this.locationMap.panTo(this.coordinates);
     },

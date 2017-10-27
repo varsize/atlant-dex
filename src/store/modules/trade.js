@@ -12,16 +12,19 @@ export default {
     baseCurrency(state) {
       return state.pair.split('_')[0];
     },
-    derivedCurrency(state) {
+    quoteCurrency(state) {
       return state.pair.split('_')[1];
+    },
+    getPairName: (state, getters) => ({base = getters.baseCurrency, quote = getters.quoteCurrency}) => {
+      return `${base}_${quote}`;
     },
   },
   mutations: {
     setChartData(state, data) {
       state.chart.data = data;
     },
-    setCurrency(state, currency) {
-      state.pair = 'BTC_' + currency;
+    setPair(state, pair) {
+      state.pair = pair;
     },
   },
   actions: {
@@ -33,8 +36,11 @@ export default {
         commit('setChartData', res.data.result);
       });
     },
-    changeCurrency({commit, dispatch}, currency) {
-      commit('setCurrency', currency);
+    changeQuoteCurrency({commit, dispatch, getters}, currency) {
+      const pair = getters.getPairName({
+        quote: currency,
+      });
+      commit('setPair', pair);
       dispatch('loadChart');
     },
   },

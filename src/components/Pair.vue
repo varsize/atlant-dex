@@ -1,7 +1,7 @@
 <template lang="pug">
 .pair
   .pair__label Your current pair:
-  .pair__currency ETH
+  .pair__currency {{baseCurrency}}
   Icon.pair__exchange(id="exchange")
   Dropdown.pair__dropdown(:options="currencies" v-model="selected")
 </template>
@@ -25,21 +25,22 @@ export default {
   },
   computed: {
     ...mapGetters('trade', {
-      derivedCurrency: 'derivedCurrency',
+      baseCurrency: 'baseCurrency',
+      quoteCurrency: 'quoteCurrency',
     }),
   },
   methods: {
     ...mapActions('trade', {
-      changeCurrency: 'changeCurrency',
+      changeQuoteCurrency: 'changeQuoteCurrency',
     }),
   },
   watch: {
     selected() {
-      this.changeCurrency(this.selected);
+      this.changeQuoteCurrency(this.selected);
     },
   },
   created() {
-    this.selected = this.derivedCurrency;
+    this.selected = this.quoteCurrency;
   },
   components: {
     Icon,
