@@ -65,6 +65,7 @@ export default {
 
 <style lang="scss">
   .sidebar {
+    width: 287px;
     &__item {
       padding: 26px;
       border-bottom: 1px solid #032537;
