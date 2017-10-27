@@ -16,7 +16,7 @@
       .propertyMap__info
         span.propertyMap__param Type:
         span Multi-purpose
-      button.propertyMap__button More details
+      BButton.propertyMap__button(color="yellow" rounded) More details
 </template>
 
 <script>
@@ -24,6 +24,7 @@ import {mapGetters} from 'vuex';
 import {getBuilding} from 'services/properties';
 import GoogleMapsLoader from 'google-maps';
 import Icon from './Icon';
+import BButton from './BButton';
 
 export default {
   data() {
@@ -104,6 +105,7 @@ export default {
   },
   components: {
     Icon,
+    BButton,
   },
 };
 </script>
