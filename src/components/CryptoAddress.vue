@@ -100,8 +100,8 @@ export default {
     margin-right: 10px;
   }
   &__crypto {
-    max-width: 177px;
     word-wrap: break-word;
+    word-break: break-all;
   }
   &__details{
     display: flex;
