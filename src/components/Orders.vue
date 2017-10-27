@@ -1,7 +1,7 @@
 <template lang='pug'>
 table.orders
   tbody.orders__body
-    tr.orders__row(v-for="i in 7")
+    tr.orders__row(v-for="i in 0")
       td.orders__cell
         .orders__typeWrapper
           .orders__square(:class="{'orders__square--buy': getType(i), 'orders__square--sell': !getType(i)}")

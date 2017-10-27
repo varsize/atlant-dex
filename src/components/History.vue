@@ -1,17 +1,32 @@
 <template lang='pug'>
 table.history
   tbody.history__body
-    tr.history__row(v-for="i in 23")
-      td.history__cell(:class="`history__cell--${(i % 2) ? 'buy' : 'sell'}`") 2.000000
-      td.history__cell {{0.010.toFixed(3)}}
-      td.history__cell {{0.016.toFixed(3)}}
+    tr.history__row(v-for="trade in trades")
+      td.history__cell(:class="`history__cell--${(trade[3]) ? 'sell' : 'buy'}`") {{trade[0]}}
+      td.history__cell {{trade[1].toFixed(4)}}
+      td.history__cell {{(trade[0]*trade[1]).toFixed(4)}}
 </template>
 
 <script>
+import {mapState, mapActions} from 'vuex';
+
 export default {
   data() {
     return {
     };
+  },
+  computed: {
+    ...mapState('trade', {
+      trades: 'trades',
+    }),
+  },
+  methods: {
+    ...mapActions('trade', {
+      loadDesktop: 'loadDesktop',
+    }),
+  },
+  mounted() {
+    this.loadDesktop();
   },
 };
 </script>

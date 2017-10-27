@@ -1,7 +1,7 @@
 <template lang="pug">
 .balance
   .balance__currency {{currency}}
-  .balance__amount 1.0526064
+  .balance__amount 0
   Icon.balance__icon(id='deposit' @click="deposit()")
 </template>
 

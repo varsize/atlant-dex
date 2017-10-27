@@ -28,21 +28,21 @@ export default {
     return {
       accounts: [
         {
-          address: '14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBs',
-          isActive: false,
-        },
-        {
-          address: '14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBt',
+          address: '0xF46ede17c0bAb20d87Cd079a2632f71433A407b9',
           isActive: true,
         },
-        {
-          address: '14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBu',
-          isActive: false,
-        },
-        {
-          address: '14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBv',
-          isActive: false,
-        },
+        // {
+        //   address: '14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBt',
+        //   isActive: true,
+        // },
+        // {
+        //   address: '14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBu',
+        //   isActive: false,
+        // },
+        // {
+        //   address: '14rMGBspAtEv4oNdbKsKYAT7tbSgUstzBv',
+        //   isActive: false,
+        // },
       ],
     };
   },
