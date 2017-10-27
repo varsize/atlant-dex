@@ -11,7 +11,7 @@ header.header
       Balance(currency="ETH")
       .header__separator |
       Balance(currency="ATL")
-      button.header__transfer Transfer to safe balance
+      BButton.header__transfer(color="yellow" outline rounded) Transfer to safe balance
   .header__group
     .header__block
       Icon.header__info(id="info")
@@ -19,6 +19,7 @@ header.header
 
 <script>
 import Icon from './Icon';
+import BButton from './BButton';
 import Pair from './Pair';
 import Price from './Price';
 import Balance from './Balance';
@@ -32,6 +33,7 @@ export default {
   },
   components: {
     Icon,
+    BButton,
     Pair,
     Price,
     Balance,
@@ -67,11 +69,7 @@ export default {
       margin: 0 11px;
     }
     &__transfer {
-      font-size: 12px;
       margin-left: 26px;
-      border-color: #e9bd24;
-      color: #e9bd24;
-      background-color: transparent;
     }
     &__info {
       $size: 16px;
