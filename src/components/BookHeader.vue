@@ -33,7 +33,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 16px 0;
-  background-color: darken(saturate(adjust-hue($color_blue, 1), 1.16), 3.33);
+  background-color: $color_daintree;
   &__title {
     color: #fff;
     font-size: 18px;
