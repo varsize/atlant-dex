@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 import misc from './modules/misc';
 import localization from './modules/localization';
 import trade from './modules/trade';
+import loader from './modules/loader';
 
 Vue.use(Vuex);
 
@@ -12,6 +13,7 @@ const store = new Vuex.Store({
     misc,
     localization,
     trade,
+    loader,
   },
   plugins: [createPersistedState({
     paths: [
