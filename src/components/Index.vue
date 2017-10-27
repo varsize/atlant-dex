@@ -114,7 +114,9 @@ export default {
 .main {
   $tilePadding: 32px;
   display: flex;
-  width: 100%;
+  width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
   &__sidebar {
     width: 0;
     min-width: 0;
@@ -166,6 +168,11 @@ export default {
     }
     &--orders {
       flex-basis: 40%;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .main {
     }
   }
 }
