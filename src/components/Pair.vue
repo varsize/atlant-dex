@@ -1,7 +1,7 @@
 <template lang="pug">
 .pair
   .pair__label Your current pair:
-  .pair__currency {{baseCurrency}}
+  .pair__currency ETH
   Icon.pair__exchange(id="exchange")
   Dropdown.pair__dropdown(:options="currencies" v-model="selected")
 </template>
