@@ -47,11 +47,9 @@ input {
 }
 
 button {
-  padding: 7px 12px;
-  border-radius: 2px;
-  border-width: 1px;
-  font-weight: bold;
-  &:hover{
+  border: 0;
+  outline: 0;
+  &:hover {
     cursor: pointer;
   }
 }

@@ -14,13 +14,14 @@
     input.buySell__input
     .buySell__label Price
     input.buySell__input
-    button.buySell__button PLACE ORDER
+    BButton(color="yellow" full).buySell__button Place order
     div.buySell__note Do not forget to top up the trade balance
 </template>
 
 <script>
 import Icon from './Icon';
 import Radio from './Radio';
+import BButton from './BButton';
 
 export default {
   data() {
@@ -32,6 +33,7 @@ export default {
   components: {
     Icon,
     Radio,
+    BButton,
   },
 };
 
@@ -102,15 +104,8 @@ export default {
   &__input {
     width: 100%;
   }
-  &__button{
-    font-family: 'Roboto';
+  &__button {
     margin-top: 34px;
-    width: 100%;
-    font-size: 12px;
-    color: #02334d;
-    background: linear-gradient(to bottom,#1e5799 0,#f3de54 0,#e3a83b 100%);
-    border: none;
-    font-weight: 700;
   }
   &__note{
     margin-top: 38px;
