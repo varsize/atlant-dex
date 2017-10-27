@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     ...mapGetters('trade', {
-      getCurrency: 'getCurrency',
+      derivedCurrency: 'derivedCurrency',
     }),
   },
   methods: {
@@ -39,7 +39,7 @@ export default {
     },
   },
   created() {
-    this.selected = this.getCurrency;
+    this.selected = this.derivedCurrency;
   },
   components: {
     Icon,

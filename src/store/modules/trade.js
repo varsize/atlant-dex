@@ -2,18 +2,23 @@ import * as Trade from 'services/api/trade';
 
 export default {
   state: {
-    period: '1d',
     pair: 'BTC_ATL',
-    chartData: {},
+    chart: {
+      data: {},
+      period: '1d',
+    },
   },
   getters: {
-    getCurrency(state) {
+    baseCurrency(state) {
+      return state.pair.split('_')[0];
+    },
+    derivedCurrency(state) {
       return state.pair.split('_')[1];
     },
   },
   mutations: {
-    setChartData(state, chartData) {
-      state.chartData = chartData;
+    setChartData(state, data) {
+      state.chart.data = data;
     },
     setCurrency(state, currency) {
       state.pair = 'BTC_' + currency;
@@ -21,14 +26,11 @@ export default {
   },
   actions: {
     loadChart({commit, state}) {
-      const payload = {
+      Trade.getChart({
         period: state.period,
         pair: state.pair,
-      };
-      console.log(payload);
-      Trade.getChart(payload).then((res) => {
+      }).then((res) => {
         commit('setChartData', res.data.result);
-        console.log(state.chartData);
       });
     },
     changeCurrency({commit, dispatch}, currency) {

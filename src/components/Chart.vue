@@ -21,8 +21,9 @@ export default {
   },
   computed: {
     ...mapState('trade', {
-      chartData: 'chartData',
-      candles: (state) => state.chartData.candles,
+      startTicks: (state) => state.chart.data.startTicks,
+      candleTicks: (state) => state.chart.data.candleTicks,
+      candles: (state) => state.chart.data.candles,
     }),
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
       loadChart: 'loadChart',
     }),
     getCandleTime(index) {
-      return ticksToMilliseconds(this.chartData.startTicks + (this.chartData.candleTicks * index));
+      return ticksToMilliseconds(this.startTicks + (this.candleTicks * index));
     },
     getSeries(index) {
       return this.candles.map((item, i) => {
@@ -57,13 +58,12 @@ export default {
     createChart() {
       const prices = this.getCandlestickSeries();
       const volumes = this.getVolumeSeries();
-      console.log(prices);
       this.chart = Highstock.stockChart('chart', {
         chart: {
           renderTo: 'chart',
           spacing: [20, 40, 0, 20],
           backgroundColor: '#03354f',
-          reflow: false, // Whether to reflow the chart to fit the width of the container div on resizing the window. DEFAUL 'true'
+          reflow: false,
           style: {
             fontFamily: 'Roboto',
             fontSize: '12px',
