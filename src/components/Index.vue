@@ -1,4 +1,4 @@
-<template lang="pug">
+<template lang='pug'>
 .main
   .main__sidebar(:class='sidebarClass')
     Sidebar
@@ -17,24 +17,24 @@
       .main__tile.main__tile--history
         Padding
           Padding(bottom)
-            TileHeader(title="History of trades" center)
+            TileHeader(title='History of trades' center)
           History
       .main__tile.main__tile--book
         Padding
-          TileHeader(title="Order book" center)
+          TileHeader(title='Order book' center)
         .d-flex.w-100
           .main__tile
-            Book
+            Book(:limit='19')
           .main__tile
-            Book(ask)
+            Book(ask, :limit='19')
       .main__tile.main__tile--orders
         Padding
           Padding(bottom)
-            TileHeader(title="Open orders")
+            TileHeader(title='Open orders')
           Orders
           .main__ordersSep
           Padding(bottom)
-            TileHeader(title="Completed orders")
+            TileHeader(title='Completed orders')
           .main__orders
             Orders
 </template>
@@ -69,13 +69,25 @@ export default {
     ...mapMutations('misc', {
       updateScreenType: 'updateScreenType',
     }),
+    ...mapMutations('trade', {
+      addNewCandle: 'addNewCandle',
+    }),
     ...mapActions('localization', {
       setLang: 'setLang',
     }),
+    hubSubscribe() {
+      this.$hub.proxy.on('newCandle', (res) => {
+        this.addNewCandle(res);
+        console.log(res);
+      });
+    },
   },
   created() {
     this.setLang();
     this.updateScreenType();
+    this.hubSubscribe();
+
+    this.$hub.start();
 
     window.addEventListener('resize', () => {
       setTimeout(() => {
@@ -101,15 +113,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import "~normalize.css/normalize";
-@import "~sass/defaults";
-@import "~sass/fonts";
-@import "~sass/overrides";
-@import "~sass/global";
+<style lang='scss'>
+@import '~normalize.css/normalize';
+@import '~sass/defaults';
+@import '~sass/fonts';
+@import '~sass/overrides';
+@import '~sass/global';
 @import '~variables';
-@import "~sass/bootstrap/flex";
-@import "~bootstrap/scss/utilities/sizing";
+@import '~sass/bootstrap/flex';
+@import '~bootstrap/scss/utilities/sizing';
 
 .main {
   $tilePadding: 32px;

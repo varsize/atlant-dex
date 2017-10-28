@@ -1,17 +1,23 @@
 <template lang="pug">
 .price
-  .price__value 0.018260
-  .price__change (#[Icon.price__icon(id="triangle-red")] #[span 1.73%])
+  .price__value {{last}}
+  .price__change (#[Icon.price__icon(id="triangle-red")] #[span {{change.toFixed(2)}}%])
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import Icon from './Icon';
 
 export default {
   data() {
     return {
-
     };
+  },
+  computed: {
+    ...mapState('trade', {
+      last: (state) => state.ohlc.close,
+      change: (state) => state.ohlc.change,
+    }),
   },
   components: {
     Icon,
