@@ -5,6 +5,7 @@ import misc from './modules/misc';
 import localization from './modules/localization';
 import trade from './modules/trade';
 import loader from './modules/loader';
+import modal from './modules/modal';
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ const store = new Vuex.Store({
     localization,
     trade,
     loader,
+    modal,
   },
   plugins: [createPersistedState({
     paths: [
