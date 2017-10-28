@@ -1,7 +1,7 @@
 <template lang='pug'>
 div.chart
   div.btn__periodSwitcher
-    span.btn__periodBtn(v-for="period in periods", :class="{'btn__periodBtn--active' : isCurrentPeriod(period)}", @click="changeChartPeriod(period)") {{period}}
+    span.btn__periodBtn(v-for="period in periods", :class="{'btn__periodBtn--active' : isCurrentPeriod(period)}", @click="setChartPeriod(period)") {{period}}
   div.btn__chartsSwitcher
     Icon.btn__chartsBtn(v-for="chart in charts", :id="chart", :class="{'btn__chartsBtn--active' : isCurrentChart(chart)}", @click="setChartType(chart)")
   div#chart
@@ -52,6 +52,10 @@ export default {
       loadChart: 'loadChart',
       changeChartPeriod: 'changeChartPeriod',
     }),
+    setChartPeriod(pediod) {
+      this.changeChartPeriod(pediod);
+      this.$hub.proxy.invoke('setCandleSize', pediod);
+    },
     isCurrentChart(chart) {
       return this.currentChart === chart;
     },
