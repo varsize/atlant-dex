@@ -4,6 +4,7 @@ export const hubURL = `${baseURL}/signalr/hubs`;
 export const hubName = 'notificationHub';
 export const notificationTimeout = 3000;
 export const mobileBreakpoint = 992;
+export const maxRenderedCandles = 100;
 
 export const serverCodes = {
   '101': {

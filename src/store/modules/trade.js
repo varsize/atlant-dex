@@ -78,10 +78,8 @@ export default {
       const low = data[2];
       const close = data[3];
       const volume = data[4];
-      if (data[5]) {
-        state.chart.data.candles[state.chart.data.candles.length-1] = [open, high, low, close, volume]; // set last element
-        state.chart.data.candles.push([close, close, close, close, 0]); // add new empty element
-        state.chart.data.candles.splice(0, 1); // remove first element of array
+      if (data[5]) { // new / update
+        state.chart.data.candles.push([open, high, low, close, volume]);
       } else {
         let oldArray = state.chart.data.candles;
         oldArray.splice(oldArray.length-1, 1);
