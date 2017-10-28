@@ -38,11 +38,6 @@ div
               TileHeader(title='Completed orders')
             .main__orders
               Orders
-              .main__ordersSep
-              Padding(bottom)
-                TileHeader(title="Completed orders")
-              .main__orders
-                Orders
   //- Modals
   InDemo
 </template>
