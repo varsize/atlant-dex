@@ -11,6 +11,7 @@ div.chart
 import Highstock from 'highcharts/highstock';
 import {mapState, mapGetters, mapActions} from 'vuex';
 import {ticksToMilliseconds} from 'services/misc';
+import {maxRenderedCandles} from 'config';
 import Icon from './Icon';
 
 export default {
@@ -35,11 +36,16 @@ export default {
     ...mapState('trade', {
       startTicks: (state) => state.chart.data.startTicks,
       candleTicks: (state) => state.chart.data.candleTicks,
-      candles: (state) => state.chart.data.candles,
+      allCandles: (state) => state.chart.data.candles,
     }),
     ...mapGetters('trade', {
       isCurrentPeriod: 'isCurrentPeriod',
     }),
+    candles() {
+      if (this.allCandles) {
+        return this.allCandles.slice(-maxRenderedCandles);
+      }
+    },
   },
   methods: {
     ...mapActions('trade', {
