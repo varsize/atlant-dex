@@ -14,12 +14,11 @@
     input.buySell__input
     .buySell__label Price
     input.buySell__input
-    BButton.buySell__button(color="yellow" full caps @click="placeOrder") Place order
+    BButton.buySell__button(color="yellow" full caps @click="openInDemo") Place order
     div.buySell__note Do not forget to top up the trade balance
 </template>
 
 <script>
-import {mapMutations} from 'vuex';
 import Icon from './Icon';
 import Radio from './Radio';
 import BButton from './BButton';
@@ -30,14 +29,6 @@ export default {
       type: '',
       isBuy: false,
     };
-  },
-  methods: {
-    ...mapMutations('modal', {
-      openModal: 'open',
-    }),
-    placeOrder() {
-      this.openModal('inDemo');
-    },
   },
   components: {
     Icon,
