@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     deposit() {
-      alert(123);
+      this.openInDemo();
     },
   },
   props: {

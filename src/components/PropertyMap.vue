@@ -16,7 +16,7 @@
       .propertyMap__info
         span.propertyMap__param Type:
         span {{building.info.type}}
-      BButton.propertyMap__button(color="yellow" rounded) More details
+      BButton.propertyMap__button(color="yellow" rounded @click="openInDemo") More details
 </template>
 
 <script>

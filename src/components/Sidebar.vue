@@ -13,9 +13,9 @@
     )
   .sidebar__item
     .sidebar__buttons
-      BButton(color="yellow" rounded) Create new
+      BButton(color="yellow" rounded @click="openInDemo") Create new
       b or
-      BButton(color="sulu" rounded outline) Import
+      BButton(color="sulu" rounded outline @click="openInDemo") Import
   .sidebar__item.sidebar__item--copyright Copyright &#169; Atlant, 2017
 </template>
 
