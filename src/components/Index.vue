@@ -83,9 +83,9 @@ export default {
       setLang: 'setLang',
     }),
     hubSubscribe() {
-      this.$hub.proxy.on('newCandle', (res) => {
-        this.addNewCandle(res);
-      });
+      // this.$hub.proxy.on('newCandle', (res) => {
+      //   this.addNewCandle(res);
+      // });
       this.$hub.proxy.on('newOrderBookTop', ([currency, side, orders, volume]) => {
         if (side) {
           this.setOrdersAsks(orders);
