@@ -95,7 +95,7 @@ export default {
       };
       this.locationMap = new google.maps.Map(element, options);
       const image = {
-        url: 'src/assets/images/pointer.png',
+        url: 'assets/images/pointer.png',
         anchor: new google.maps.Point(15, 40),
       };
       this.marker = new google.maps.Marker({
