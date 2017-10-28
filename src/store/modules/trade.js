@@ -17,6 +17,7 @@ export default {
       close: 0,
       high: 0,
       low: 0,
+      change: 0,
     },
   },
   getters: {
@@ -41,13 +42,27 @@ export default {
       state.trades = trades;
     },
     setBook(state, data) {
-      state.book.asks = data.asks.slice(0, 19);
-      state.book.bids = data.bids.slice(0, 19);
+      state.book.asks = data.asks;
+      state.book.bids = data.bids;
     },
     setOHLC(state, data) {
       state.ohlc.high = data.high;
       state.ohlc.low = data.low;
       state.ohlc.close = data.last;
+      state.ohlc.change = data.change;
+    },
+    addNewCandle(state, data) {
+      const open = data[0];
+      const high = data[1];
+      const low = data[2];
+      const close = data[3];
+      const volume = data[4];
+      if (data[5]) {
+        state.chart.data.candles[state.chart.data.candles.length-1] = [open, high, low, close, volume]; // set last element
+        state.chart.data.candles.push([close, close, close, close, 0]); // add new empty element
+        state.chart.data.candles.splice(0, 1); // remove first element of array
+      } else {
+      }
     },
   },
   actions: {

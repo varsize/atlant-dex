@@ -14,7 +14,7 @@
       .address__balanceText SAFE BALANCE:
       .address__balanceRow
         .address__currency ETH
-        .address__balance 5.869506517
+        .address__balance 0
       .address__balanceRow
         .address__currency USD
         .address__balance 0

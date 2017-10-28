@@ -25,7 +25,8 @@ export default {
       book: (state) => state.book,
     }),
     orderBook() {
-      return (this.ask) ? this.book.asks : this.book.bids;
+      const items = (this.ask) ? this.book.asks : this.book.bids;
+      return items.slice(0, this.limit);
     },
   },
   mounted() {
@@ -34,6 +35,11 @@ export default {
     ask: {
       type: Boolean,
       default: false,
+      required: false,
+    },
+    limit: {
+      type: Number,
+      default: 19,
       required: false,
     },
   },
