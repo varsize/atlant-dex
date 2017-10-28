@@ -11,10 +11,10 @@ header.header
       Balance(currency="ETH")
       .header__separator |
       Balance(currency="ATL")
-      BButton.header__transfer(color="yellow" outline rounded) Transfer to safe balance
+      BButton.header__transfer(color="yellow" outline rounded @click="openInDemo") Transfer to safe balance
   .header__group
     .header__block
-      Icon.header__info(id="info")
+      Icon.header__info(id="info" @click="openInDemo")
 </template>
 
 <script>

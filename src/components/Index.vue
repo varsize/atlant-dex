@@ -1,42 +1,50 @@
 <template lang='pug'>
-.main
-  .main__sidebar(:class='sidebarClass')
-    Sidebar
-  .main__toolbar
-    Toolbar
-  .main__content
-    .main__header
-      TheHeader
-    .main__tiles
-      .main__tile.main__tile--buysell
-        BuySell
-      .main__tile.main__tile--chart
-        Chart
-      .main__tile.main__tile--map
-        PropertyMap
-      .main__tile.main__tile--history
-        Padding
-          Padding(bottom)
-            TileHeader(title='History of trades' center)
-          History
-      .main__tile.main__tile--book
-        Padding
-          TileHeader(title='Order book' center)
-        .d-flex.w-100
-          .main__tile
-            Book(:limit='19')
-          .main__tile
-            Book(ask, :limit='19')
-      .main__tile.main__tile--orders
-        Padding
-          Padding(bottom)
-            TileHeader(title='Open orders')
-          Orders
-          .main__ordersSep
-          Padding(bottom)
-            TileHeader(title='Completed orders')
-          .main__orders
+div
+  .main
+    .main__sidebar(:class='sidebarClass')
+      Sidebar
+    .main__toolbar
+      Toolbar
+    .main__content
+      .main__header
+        TheHeader
+      .main__tiles
+        .main__tile.main__tile--buysell
+          BuySell
+        .main__tile.main__tile--chart
+          Chart
+        .main__tile.main__tile--map
+          PropertyMap
+        .main__tile.main__tile--history
+          Padding
+            Padding(bottom)
+              TileHeader(title='History of trades' center)
+            History
+        .main__tile.main__tile--book
+          Padding
+            TileHeader(title='Order book' center)
+          .d-flex.w-100
+            .main__tile
+              Book(:limit='19')
+            .main__tile
+              Book(ask, :limit='19')
+        .main__tile.main__tile--orders
+          Padding
+            Padding(bottom)
+              TileHeader(title='Open orders')
             Orders
+            .main__ordersSep
+            Padding(bottom)
+              TileHeader(title='Completed orders')
+            .main__orders
+              Orders
+              .main__ordersSep
+              Padding(bottom)
+                TileHeader(title="Completed orders")
+              .main__orders
+                Orders
+  //- Modals
+  InDemo
 </template>
 
 <script>
@@ -53,6 +61,7 @@ import Orders from './Orders';
 import Book from './Book';
 import History from './History';
 import PropertyMap from './PropertyMap';
+import InDemo from './modals/InDemo';
 
 export default {
   computed: {
@@ -125,6 +134,7 @@ export default {
     History,
     PropertyMap,
     Chart,
+    InDemo,
   },
 };
 </script>

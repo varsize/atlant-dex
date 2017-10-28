@@ -1,19 +1,15 @@
 <template lang='pug'>
 div.chart
   div.btn__periodSwitcher
-    span.btn__periodBtn(id="lineChart") 12H
-    span.btn__periodBtn(id="lineChart") 24H
-    span.btn__periodBtn(id="lineChart") 3D
-    span.btn__periodBtn.btn__periodBtn--active(id="lineChart") 1W
+    span.btn__periodBtn(v-for="period in periods", :class="{'btn__periodBtn--active' : isCurrentPeriod(period)}", @click="changeChartPeriod(period)") {{period}}
   div.btn__chartsSwitcher
-    Icon.btn__chartsBtn(id="lineChart")
-    Icon.btn__chartsBtn.btn__chartsBtn--active(id="candleChart", :class="")
+    Icon.btn__chartsBtn(v-for="chart in charts", :id="chart", :class="{'btn__chartsBtn--active' : isCurrentChart(chart)}", @click="setChartType(chart)")
   div#chart
 </template>
 
 <script>
 import Highstock from 'highcharts/highstock';
-import {mapState, mapActions} from 'vuex';
+import {mapState, mapGetters, mapActions} from 'vuex';
 import {ticksToMilliseconds} from 'services/misc';
 import Icon from './Icon';
 
@@ -21,6 +17,18 @@ export default {
   data() {
     return {
       chart: null,
+      periods: [
+        '1h',
+        '1d',
+        '1w',
+        '1mn',
+        '1y',
+      ],
+      charts: [
+        'lineChart',
+        'candleChart',
+      ],
+      currentChart: 'candleChart',
     };
   },
   computed: {
@@ -29,11 +37,45 @@ export default {
       candleTicks: (state) => state.chart.data.candleTicks,
       candles: (state) => state.chart.data.candles,
     }),
+    ...mapGetters('trade', {
+      isCurrentPeriod: 'isCurrentPeriod',
+    }),
   },
   methods: {
     ...mapActions('trade', {
       loadChart: 'loadChart',
+      changeChartPeriod: 'changeChartPeriod',
     }),
+    isCurrentChart(chart) {
+      return this.currentChart === chart;
+    },
+    setChartType(chart) {
+      this.currentChart = chart;
+      if (this.currentChart=='candleChart') {
+        this.chart.update({
+          series: [{
+              type: 'candlestick',
+              data: this.getCandlestickSeries(),
+            },
+            {
+              data: this.getVolumeSeries(),
+            },
+          ],
+        }, true, true);
+      } else {
+        this.chart.update({
+          series: [{
+              type: 'line',
+              data: this.getPriceSeries(),
+            },
+            {
+              data: this.getVolumeSeries(),
+            },
+          ],
+        }, true, true);
+      }
+    },
+
     getCandleTime(index) {
       return ticksToMilliseconds(this.startTicks + (this.candleTicks * index));
     },
@@ -238,6 +280,7 @@ export default {
     margin: 0 4px;
     font-size: 14px;
     line-height: 15px;
+    text-transform: uppercase;
     cursor: pointer;
     &--active {
       color: #42B6F6;

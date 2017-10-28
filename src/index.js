@@ -12,6 +12,14 @@ Vue.use(hub, {
   name: hubName,
 });
 
+Vue.mixin({
+  methods: {
+    openInDemo() {
+      store.commit('modal/open', 'inDemo');
+    },
+  },
+});
+
 new Vue({
   el: '#app',
   store,

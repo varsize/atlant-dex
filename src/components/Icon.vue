@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.svgIcon
+svg.svgIcon(v-on="$listeners")
   use(:xlink:href="`#${id}`")
 </template>
 

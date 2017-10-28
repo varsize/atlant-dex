@@ -6,9 +6,9 @@
     .address__crypto {{address}}
   .address__details(v-show="isActive")
     .address__actions
-      .address__export Export
-      .address__withdraw Withdraw
-      .address__remove Remove
+      .address__export(@click="openInDemo") Export
+      .address__withdraw(@click="openInDemo") Withdraw
+      .address__remove(@click="openInDemo") Remove
     .address__separate -
     .address__balances
       .address__balanceText SAFE BALANCE:
@@ -21,7 +21,7 @@
     .address__separate -
     .address__transferRow
       Icon.address__transferIcon(id="transfer")
-      .address__transferText Transfer to trade balance
+      .address__transferText(@click="openInDemo") Transfer to trade balance
 </template>
 
 <script>

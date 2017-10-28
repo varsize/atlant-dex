@@ -1,11 +1,11 @@
 <template lang='pug'>
 .toolbar
   .toolbar__main
-    Icon.toolbar__icon.toolbar__close(v-if='showSidebar', id='cross' @click.native='toggleSidebar')
-    Icon.toolbar__icon.toolbar__close(v-else, id='hamburger' @click.native='toggleSidebar')
-    Icon.toolbar__icon.toolbar__wallet(id='wallet')
-    Icon.toolbar__icon.toolbar__alert(id='alert')
-  Icon.toolbar__icon.toolbar__settings(id='settings')
+    Icon.toolbar__icon.toolbar__close(v-if='showSidebar', id='cross' @click='toggleSidebar')
+    Icon.toolbar__icon.toolbar__close(v-else, id='hamburger' @click='toggleSidebar')
+    Icon.toolbar__icon.toolbar__wallet(id='wallet' @click="openInDemo")
+    Icon.toolbar__icon.toolbar__alert(id='alert' @click="openInDemo")
+  Icon.toolbar__icon.toolbar__settings(id='settings' @click="openInDemo")
 </template>
 
 <script>

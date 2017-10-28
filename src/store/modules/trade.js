@@ -30,6 +30,9 @@ export default {
     getPairName: (state, getters) => ({base = getters.baseCurrency, quote = getters.quoteCurrency}) => {
       return `${base}_${quote}`;
     },
+    isCurrentPeriod: (state) => (period) => {
+      return state.chart.period === period;
+    },
   },
   mutations: {
     setChartData(state, data) {
@@ -59,6 +62,9 @@ export default {
     setPair(state, pair) {
       state.pair = pair;
     },
+    setPeriod(state, period) {
+      state.chart.period = period;
+    },
     setTradeHistory(state, trades) {
       state.trades = trades;
     },
@@ -83,13 +89,19 @@ export default {
         state.chart.data.candles.push([close, close, close, close, 0]); // add new empty element
         state.chart.data.candles.splice(0, 1); // remove first element of array
       } else {
+        let oldArray = state.chart.data.candles;
+        oldArray.splice(oldArray.length-1, 1);
+        state.chart.data.candles = [
+          ...oldArray,
+          [open, high, low, close, volume],
+        ];
       }
     },
   },
   actions: {
     loadChart({commit, state}) {
       Trade.getChart({
-        period: state.period,
+        period: state.chart.period,
         pair: state.pair,
       }).then((res) => {
         commit('setChartData', res.data.result);
@@ -112,6 +124,10 @@ export default {
       commit('setPair', pair);
       dispatch('loadChart');
       dispatch('loadDesktop');
+    },
+    changeChartPeriod({commit, dispatch}, period) {
+      commit('setPeriod', period);
+      dispatch('loadChart');
     },
   },
   namespaced: true,
