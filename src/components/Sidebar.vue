@@ -1,7 +1,8 @@
 <template lang='pug'>
 .sidebar
-  .sidebar__item
+  .sidebar__item.sidebar__item--logo
     Icon.sidebar__logo(id="logo")
+    span.sidebar__demo DEMO
   .sidebar__item.sidebar__item--header Wallets
   .sidebar__item(v-for="(account, index) in accounts")
     CryptoAddress(
@@ -71,12 +72,23 @@ export default {
       border-bottom: 1px solid #032537;
       border-right: 1px solid #032537;
       font-size: 12px;
+      &--logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        font-weight: bold;
+        color: red;
+      }
       &--header {
         font-weight: 700;
       }
       &--copyright {
         font-size: 8px;
       }
+    }
+    &__demo {
+      margin-top: 5px;
     }
     &__logo {
       width: 164px;

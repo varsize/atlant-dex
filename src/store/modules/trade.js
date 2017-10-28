@@ -62,6 +62,13 @@ export default {
         state.chart.data.candles.push([close, close, close, close, 0]); // add new empty element
         state.chart.data.candles.splice(0, 1); // remove first element of array
       } else {
+        let oldArray = state.chart.data.candles;
+        oldArray.splice(oldArray.length-1, 1);
+        state.chart.data.candles = [
+          ...oldArray,
+          [open, high, low, close, volume],
+        ];
+        console.log('last:', state.chart.data.candles[state.chart.data.candles.length-1]);
       }
     },
   },
