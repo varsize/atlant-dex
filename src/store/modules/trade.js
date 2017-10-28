@@ -35,6 +35,27 @@ export default {
     setChartData(state, data) {
       state.chart.data = data;
     },
+    addLastTrade(state, lastTrade) {
+      const lastTrades = [
+        [lastTrade[8], lastTrade[7], lastTrade[11], lastTrade[6]],
+        ...state.trades,
+      ];
+      state.trades = lastTrades;
+    },
+    setOrdersAsks(state, data) {
+      const asks = [
+        data[0], data[1],
+        ...state.book.asks,
+      ];
+      state.book.asks = asks;
+    },
+    setOrdersBids(state, data) {
+      const bids = [
+        data[0], data[1],
+        ...state.book.bids,
+      ];
+      state.book.bids = bids;
+    },
     setPair(state, pair) {
       state.pair = pair;
     },

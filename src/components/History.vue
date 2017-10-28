@@ -1,7 +1,7 @@
 <template lang='pug'>
 table.history
   tbody.history__body
-    tr.history__row(v-for="trade in trades")
+    tr.history__row(v-for='trade in lastTrades')
       td.history__cell(:class="`history__cell--${(trade[3]) ? 'sell' : 'buy'}`") {{trade[0]}}
       td.history__cell {{trade[1].toFixed(4)}}
       td.history__cell {{(trade[0]*trade[1]).toFixed(4)}}
@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     ...mapState('trade', {
-      trades: 'trades',
+      lastTrades: (state) => state.trades,
     }),
   },
   methods: {

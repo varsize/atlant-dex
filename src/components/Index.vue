@@ -71,6 +71,9 @@ export default {
     }),
     ...mapMutations('trade', {
       addNewCandle: 'addNewCandle',
+      addLastTrade: 'addLastTrade',
+      setOrdersAsks: 'setOrdersAsks',
+      setOrdersBids: 'setOrdersBids',
     }),
     ...mapActions('localization', {
       setLang: 'setLang',
@@ -78,7 +81,20 @@ export default {
     hubSubscribe() {
       this.$hub.proxy.on('newCandle', (res) => {
         this.addNewCandle(res);
-        console.log(res);
+      });
+      this.$hub.proxy.on('newOrderBookTop', ([currency, side, orders, volume]) => {
+        const data = [
+          orders[0],
+          orders[1],
+        ];
+        if (side) {
+          this.setOrdersAsks(data);
+        } else {
+          this.setOrdersBids(data);
+        };
+      });
+      this.$hub.proxy.on('newTrade', (data) => {
+        this.addLastTrade(data);
       });
     },
   },
