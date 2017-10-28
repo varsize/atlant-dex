@@ -87,7 +87,6 @@ export default {
     hubSubscribe() {
       this.$hub.proxy.on('newCandle', (res) => {
         this.addNewCandle(res);
-        console.log(res);
       });
     },
   },
