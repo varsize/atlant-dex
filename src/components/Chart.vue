@@ -1,17 +1,21 @@
 <template lang='pug'>
 div.chart
+  div.btn__periodSwitcher
+    span.btn__periodBtn(id="lineChart") 12H
+    span.btn__periodBtn(id="lineChart") 24H
+    span.btn__periodBtn(id="lineChart") 3D
+    span.btn__periodBtn.btn__periodBtn--active(id="lineChart") 1W
+  div.btn__chartsSwitcher
+    Icon.btn__chartsBtn(id="lineChart")
+    Icon.btn__chartsBtn.btn__chartsBtn--active(id="candleChart", :class="")
   div#chart
 </template>
 
 <script>
 import Highstock from 'highcharts/highstock';
-import {
-  mapState,
-  mapActions,
-} from 'vuex';
-import {
-  ticksToMilliseconds,
-} from 'services/misc';
+import {mapState, mapActions} from 'vuex';
+import {ticksToMilliseconds} from 'services/misc';
+import Icon from './Icon';
 
 export default {
   data() {
@@ -61,7 +65,7 @@ export default {
       this.chart = Highstock.stockChart('chart', {
         chart: {
           renderTo: 'chart',
-          spacing: [20, 40, 0, 20],
+          spacing: [50, 40, 10, 20],
           backgroundColor: '#03354f',
           reflow: false,
           style: {
@@ -188,16 +192,62 @@ export default {
   created() {
     this.loadChart();
   },
+  components: {
+    Icon,
+  },
 };
+
 </script>
 
 <style lang='scss'>
 .chart {
-    height: 100%;
-    width: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.btn {
+  &__chartsSwitcher {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    z-index: 4;
+    display: flex;
+  }
+
+  &__periodSwitcher {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    z-index: 4;
+    display: flex;
+  }
+
+  &__chartsBtn {
+    width: 15px;
+    height: 15px;
+    fill: #586C86;
+    margin: 0 10px;
+    cursor: pointer;
+    &--active {
+      fill: #42B6F6;
+    }
+  }
+
+  &__periodBtn {
+    color: #586C86;
+    margin: 0 4px;
+    font-size: 14px;
+    line-height: 15px;
+    cursor: pointer;
+    &--active {
+      color: #42B6F6;
+      font-weight: 500;
+    }
+  }
 }
 #chart {
-    height: 100%;
-    width: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 </style>
