@@ -92,16 +92,13 @@ export default {
         this.addNewCandle(res);
       });
       this.$hub.proxy.on('newOrderBookTop', ([currency, side, orders, volume]) => {
-        const data = [
-          orders[0],
-          orders[1],
-        ];
         if (side) {
-          this.setOrdersAsks(data);
+          this.setOrdersAsks(orders);
         } else {
-          this.setOrdersBids(data);
+          this.setOrdersBids(orders);
         };
       });
+
       this.$hub.proxy.on('newTrade', (data) => {
         this.addLastTrade(data);
       });

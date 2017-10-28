@@ -46,17 +46,11 @@ export default {
       state.trades = lastTrades;
     },
     setOrdersAsks(state, data) {
-      const asks = [
-        data[0], data[1],
-        ...state.book.asks,
-      ];
+      const asks = data;
       state.book.asks = asks;
     },
     setOrdersBids(state, data) {
-      const bids = [
-        data[0], data[1],
-        ...state.book.bids,
-      ];
+      const bids = data;
       state.book.bids = bids;
     },
     setPair(state, pair) {
