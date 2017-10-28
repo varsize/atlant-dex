@@ -29,7 +29,7 @@ export default {
     return {
       accounts: [
         {
-          address: '0xF46ede17c0bAb20d87Cd079a2632f71433A407b9',
+          address: 'demowallet',
           isActive: true,
         },
         // {
