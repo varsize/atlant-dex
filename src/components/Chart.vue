@@ -166,7 +166,7 @@ export default {
             name: 'Volume',
             data: volumes,
             type: 'column',
-            color: '#376691',
+            color: '#055580',
             yAxis: 0,
             zIndex: 1,
             pointPadding: 0.05,
